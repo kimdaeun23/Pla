@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:background="@drawable/background_register">
+    android:background="@drawable/background_login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,29 +18,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="390dp">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
-                android:text="Register Pla"
+                android:text="Welcome Pla"
                 android:textColor="#184A2C"
                 android:textSize="30dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create your new account"
-                android:textColor="#C4C4C4"
+                android:text="Login to your account"
                 android:textSize="15dp"
+                android:textColor="#C4C4C4"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_gravity="center"/>
         </LinearLayout>
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:id="@+id/textviewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:background="@drawable/edge_txtbox">
             <com.example.plantapp.FontAwesomeTextLight
                 android:layout_width="wrap_content"
@@ -53,11 +60,11 @@
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter email"
-                android:inputType="textEmailAddress"
-                android:background="@null"
+                android:hint="Email"
                 android:textSize="15dp"
-                android:fontFamily="@font/poppins_light"/>
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textEmailAddress"
+                android:background="@null"/>
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,55 +83,65 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Password"
             android:textSize="15dp"
             android:fontFamily="@font/poppins_light"
-            android:hint="Enter password"
             android:inputType="textPassword"
             android:background="@null"/>
     </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp"
-            android:gravity="center">
-            <TextView
-                android:text="If you are a member, "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#C4C4C4"
-                android:textSize="13dp"
-                android:fontFamily="@font/poppins_medium"/>
-            <TextView
-                android:text="Log in here"
-                android:id="@+id/textViewSignin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#184A2C"
-                android:textSize="13dp"
-                android:fontFamily="@font/poppins_medium"/>
-        </LinearLayout>
         <TextView
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:id="@+id/textviewMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="Forgot Password?"
+            android:textColor="#184A2C"
+            android:gravity="right"
+            android:textSize="10dp"
+            android:id="@+id/textViewFindpassword"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:gravity="bottom">
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/white"
                 android:background="@drawable/edge_btn"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Sign Up"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:text="Login" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don’t have an account?"
+                    android:textColor="#C4C4C4"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/poppins_medium"/>
+                <TextView
+                    android:paddingLeft="5dp"
+                    android:text="@string/Signup"
+                    android:id="@+id/textViewSignin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#184A2C"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/poppins_medium"/>
+            </LinearLayout>
         </LinearLayout>
 
+
+
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/edge_btn.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/edge_txtbox.xml" value="0.1645" />
+        <entry key="app/src/main/res/layout/activity_find.xml" value="0.28860931396484374" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3082305908203124" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2518518518518518" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2677459716796875" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
