@@ -5,11 +5,13 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/house_solid"
         android:title="home"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:enabled="true"/>
     <item
         android:id="@+id/plantFragment"
         android:icon="@drawable/seedling_solid"
         android:title="plant"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:enabled="true"/>
 
 </menu>

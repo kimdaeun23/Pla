@@ -29,8 +29,7 @@ public class AddFragment extends Fragment {
         tv=view.findViewById(R.id.tv);
         fragmentManager = getActivity().getSupportFragmentManager();
 
-        BottomNavigationView bottomNavigation = getActivity().findViewById(R.id.bottomNavigationView);
-        bottomNavigation.setVisibility(View.GONE);
+
 
         return view;
     }

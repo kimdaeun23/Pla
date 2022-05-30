@@ -3,6 +3,6 @@
     <!--    선택되었을때-->
     <item android:color="#184A2C" android:state_checked="true" />
     <!--    선택안되어있을때-->
-    <item android:color="#CCCCCC" android:state_checked="false" />
+    <item android:color="#EBFDF2" android:state_checked="false" />
 
 </selector>
