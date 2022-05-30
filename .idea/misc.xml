@@ -5,10 +5,23 @@
       <map>
         <entry key="app/src/main/res/drawable/edge_btn.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/edge_txtbox.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/house_solid.xml" value="0.1295" />
+        <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.1295" />
+        <entry key="app/src/main/res/drawable/plus_solid.xml" value="0.1295" />
+        <entry key="app/src/main/res/drawable/seedling_solid.xml" value="0.1295" />
+        <entry key="app/src/main/res/layout/activity_bottom.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_find.xml" value="0.28860931396484374" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.27832279911747687" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3082305908203124" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2518518518518518" />
+        <entry key="app/src/main/res/layout/activity_plant.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2677459716796875" />
+        <entry key="app/src/main/res/layout/bottom_app_bar.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_add.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2712962962962963" />
+        <entry key="app/src/main/res/layout/fragment_plant.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.2953125" />
       </map>
     </option>
   </component>
