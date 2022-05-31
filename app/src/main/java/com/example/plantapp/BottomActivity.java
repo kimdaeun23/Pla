@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -20,29 +22,69 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class BottomActivity extends AppCompatActivity{
+public class BottomActivity extends AppCompatActivity implements View.OnClickListener{
     private BottomAppBar mBottomAppBar;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private HomeFragment fragmenthome = new HomeFragment();
+    private PlantFragment fragmentplant = new PlantFragment();
+    private AddFragment fragmentadd = new AddFragment();
+    private FloatingActionButton fab_main;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragmenthome).commitAllowingStateLoss();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
+        fab_main = findViewById(R.id.fab_main);
 
-        BottomNavigationView bottomNavigation = BottomActivity.this.findViewById(R.id.bottomNavigationView);
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.homeFragment:
-                }
-                return true;
-            }
-        });
+        fab_main.setOnClickListener(this);
 
 
 
+//        BottomNavigationView bottomNavigation = BottomActivity.this.findViewById(R.id.bottomNavigationView);
+//        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.plantFragment:
+//                        startActivity(new Intent(BottomActivity.this, PlantFragment.class));
+//                }
+//                return true;
+//            }
+//        });
     }
 
+    @Override
+    public void onClick(View view) {
+        FragmentTransaction transactionadd = fragmentManager.beginTransaction();
+        transactionadd.replace(R.id.nav_host_fragment, fragmentadd).commitAllowingStateLoss();
+    }
+
+
+    class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+            switch (menuItem.getItemId()) {
+                case R.id.homeFragment:
+                    transaction.replace(R.id.nav_host_fragment, fragmenthome).commitAllowingStateLoss();
+                    break;
+                case R.id.plantFragment:
+                    transaction.replace(R.id.nav_host_fragment, fragmentplant).commitAllowingStateLoss();
+                    break;
+//                case R.id.fab_main:
+//                    transaction.replace(R.id.nav_host_fragment, fragmentadd).commitAllowingStateLoss();
+//                    break;
+
+            }
+
+            return true;
+        }
+    }
 
 }

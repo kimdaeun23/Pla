@@ -29,10 +29,9 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         tv=view.findViewById(R.id.tv);
-        fragmentManager = getActivity().getSupportFragmentManager();
+//        fragmentManager = getActivity().getSupportFragmentManager();
 
-//        BottomNavigationView bottomNavigation = getActivity().findViewById(R.id.bottomNavigationView);
-//        bottomNavigation.setVisibility(View.GONE);
+
 
         return view;
     }

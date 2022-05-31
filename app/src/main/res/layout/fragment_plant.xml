@@ -6,5 +6,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="plant"
-        android:id="@+id/tv"/>
+        android:id="@+id/tv2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
