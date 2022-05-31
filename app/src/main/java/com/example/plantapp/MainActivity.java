@@ -1,9 +1,12 @@
 package com.example.plantapp;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +18,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,15 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textviewMessage;
     ProgressDialog progressDialog;
     //define firebase object
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initializig firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
@@ -85,6 +95,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             finish();
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            String uid = user.getUid();
+
+                            //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
+                            HashMap<Object, String> hashMap = new HashMap<>();
+
+                            hashMap.put("uid",uid);
+                            hashMap.put("email", email.replace(".", ">"));
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference reference = database.getReference("Users");
+                            reference.child(uid).setValue(hashMap);
+
+                            User usermodel=new User();
+                            usermodel.email=email;
+                            usermodel.setEmail(email);
+
+                            Map<Object, String> users = new HashMap<>();
+                            users.put("email", email);
+
+                            firestore.collection("users").document(uid)
+                                    .set(users)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Log.d(TAG, "성공적으로 입력되었습니다");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "오류가 발생하였습니다", e);
+                                        }
+                                    });
+
                             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         } else {
                             //에러발생시

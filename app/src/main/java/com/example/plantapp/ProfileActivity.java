@@ -18,17 +18,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "ProfileActivity";
 
     //firebase auth object
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     //view objects
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private TextView textivewDelete;
+    private String uid;
 
 
     @Override
@@ -43,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
+
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if(firebaseAuth.getCurrentUser() == null) {
             finish();
@@ -51,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         //유저가 있다면, null이 아니면 계속 진행
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
+        uid = user.getUid();
         //textViewUserEmail의 내용을 변경해 준다.
         textViewUserEmail.setText(user.getEmail());
 
@@ -61,6 +65,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 
     }
+
 
     @Override
     public void onClick(View view) {
@@ -95,6 +100,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
             });
             alert_confirm.show();
+
         }
     }
 }
