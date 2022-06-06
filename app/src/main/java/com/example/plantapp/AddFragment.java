@@ -184,8 +184,9 @@ public class AddFragment extends Fragment {
                         }
                     });
 
-                    Intent intent = ((Activity) getContext()).getIntent();
-                    ((Activity) getContext()).startActivity(intent);
+//                    Intent intent = ((Activity) getContext()).getIntent();
+//                    ((Activity) getContext()).startActivity(intent);
+                    ((BottomActivity)getActivity()).replaceplant();
                 }
                 else {
                     Toast.makeText(getContext(), "사진을 선택해 주세요", Toast.LENGTH_SHORT).show();

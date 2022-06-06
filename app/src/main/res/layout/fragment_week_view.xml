@@ -1,36 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeFragment"
+    tools:context=".WeekViewFragment"
     android:background="@drawable/background_main">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="25dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Weekly"
-        android:layout_marginTop="50dp"
-        android:textColor="#184A2C"
-        android:fontFamily="@font/poppins_bold"
-        android:background="@null"
-        android:textStyle="bold"
-        android:id="@+id/btn_weekly"
-        android:textSize="18dp"/>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
@@ -78,9 +66,9 @@
             android:layout_weight="1"
             android:text="SUN"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -88,9 +76,9 @@
             android:layout_weight="1"
             android:text="MON"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -98,9 +86,9 @@
             android:layout_weight="1"
             android:text="TUE"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -108,9 +96,9 @@
             android:layout_weight="1"
             android:text="WED"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -118,9 +106,9 @@
             android:layout_weight="1"
             android:text="THUR"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -128,9 +116,9 @@
             android:layout_weight="1"
             android:text="FRI"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -138,9 +126,9 @@
             android:layout_weight="1"
             android:text="SAT"
             android:textColor="#C4C4C4"
+            android:fontFamily="@font/poppins_semibold"
             android:textAlignment="center"
-            android:textSize="15dp"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="15dp"/>
 
 
     </LinearLayout>
@@ -149,9 +137,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Event"
+        android:textColor="#76B536"
+        android:background="@null"
+        android:textStyle="bold"
+        android:id="@+id/btn_newevent"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
+
+    <ListView
+        android:id="@+id/eventListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 
 

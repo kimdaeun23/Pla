@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -28,13 +29,15 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     private HomeFragment fragmenthome = new HomeFragment();
     private PlantFragment fragmentplant = new PlantFragment();
     private AddFragment fragmentadd = new AddFragment();
+    private WeekViewFragment fragmentweekView= new WeekViewFragment();
+    private EventEditFragment fragmenteventEdit= new EventEditFragment();
     private FloatingActionButton fab_main;
+    private FragmentTransaction transaction = fragmentManager.beginTransaction();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragmenthome).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -85,6 +88,19 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
 
             return true;
         }
+    }
+    public void replaceweekview(){
+        FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
+        transactionfrag.replace(R.id.nav_host_fragment, fragmentweekView).commit();
+    }
+    public void replaceeventedit(){
+        FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
+        transactionfrag.replace(R.id.nav_host_fragment, fragmenteventEdit).commit();
+    }
+
+    public void replaceplant(){
+        FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
+        transactionfrag.replace(R.id.nav_host_fragment, fragmentplant).commit();
     }
 
 }
