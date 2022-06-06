@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirebaseEmail</string>
+    <string name="app_name">PLA</string>
 
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>
@@ -11,6 +11,8 @@
     <string name="signup">회원가입</string>
     <string name="success_signup">회원가입 성공</string>
     <string name="failed_signup">회원가입 실패</string>
-
+    <string name="format_today">"yyyy년 MM월 dd일 E요일"</string>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
     <string name="Signup"><u>Sign up</u>.</string>
 </resources>
