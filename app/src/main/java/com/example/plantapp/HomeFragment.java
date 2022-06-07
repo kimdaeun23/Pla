@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
     private RecyclerView calendarRecyclerView;
     private Button btn_pre,btn_nx;
     private TextView btn_weekly;
+    private TextView profile;
     private FragmentManager fragmentManager;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +48,13 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
         btn_weekly = view.findViewById(R.id.btn_weekly);
         btn_pre = view.findViewById(R.id.btn_pre);
         btn_nx = view.findViewById(R.id.btn_nx);
+        profile=view.findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ProfileActivity.class));
+            }
+        });
 
         btn_weekly.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +88,6 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
     {
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
         monthYearText = view.findViewById(R.id.monthYearTV);
-
     }
 
     public void setMonthView()

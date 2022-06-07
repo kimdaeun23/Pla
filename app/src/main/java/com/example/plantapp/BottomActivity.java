@@ -102,5 +102,8 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
         FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
         transactionfrag.replace(R.id.nav_host_fragment, fragmentplant).commit();
     }
+    public void replaceprofile(){
+        startActivity(new Intent(this, ProfileActivity.class));
+    }
 
 }

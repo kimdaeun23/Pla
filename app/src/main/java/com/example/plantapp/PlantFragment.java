@@ -25,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -42,6 +44,7 @@ public class PlantFragment extends Fragment {
     ViewPager2 viewPager2;
     PlantAdapter adapter;
     private PlantViewModel plantViewModel;
+    private TextView profile;
 
 
     @Override
@@ -70,6 +73,13 @@ public class PlantFragment extends Fragment {
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
         plantViewModel.userInfo();
+        profile=view.findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ProfileActivity.class));
+            }
+        });
 
 //        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 //            @Override

@@ -6,6 +6,7 @@ import static com.example.plantapp.CalendarUtils.monthYearFromDate;
 
 import static java.security.AccessController.getContext;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,6 +56,7 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
     private String exists="";
+    private TextView profile;
 
     private EventDataViewModel eventDataViewModel;
     private ArrayList<EventData> arrCard;
@@ -99,6 +101,14 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
                 ((BottomActivity)getActivity()).replaceeventedit();
             }
         });
+        profile=view.findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ProfileActivity.class));
+            }
+        });
+
         return view;
     }
     private void initWidgets(View view)
@@ -141,44 +151,6 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
         super.onResume();
 
     }
-
-//    public void setlist()
-//    {
-//        exititem();
-//        Log.d("존재여부",exists);
-////        if(exists.equals("exists")){
-//            arrCard = new ArrayList<>();
-//            Log.d("date",initdate);
-//            db.collection("users")
-//                    .document(firebaseAuth.getCurrentUser().getUid())
-//                    .collection("events")
-//                    .document(initdate)
-//                    .collection("plans")
-//                    .get()
-//                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                        @Override
-//                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                            for (QueryDocumentSnapshot item: queryDocumentSnapshots){
-//                                RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
-//                                String str_name = item.get("name").toString();
-//                                String str_eventCellplant = item.get("eventCellplant").toString();
-//                                String str_event_type = item.get("name").toString();
-//                                String str_date = item.get("name").toString();
-//                                arrCard.add(new EventData(str_name,str_date,str_eventCellplant,str_event_type));
-//                                madapter= new EventDataAdapter(arrCard);
-//                                eventdataRecyclerView.setLayoutManager(layoutManager);
-//                                madapter.notifyDataSetChanged();
-//                                eventdataRecyclerView.setAdapter(madapter);
-//                            }
-//                        }
-//                    });
-////        }
-////        else {
-////            Log.d(TAG, "Document does not exist!");
-////            exists="notexists";
-////        }
-//
-//    }
 
     public void setlist(){
         db.collection("users")

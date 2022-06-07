@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonLogout;
     private TextView textivewDelete;
     private String uid;
+    private TextView back;
 
 
     @Override
@@ -43,6 +44,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         textivewDelete = (TextView) findViewById(R.id.textviewDelete);
+        back=(TextView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BottomActivity.class));
+            }
+        });
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
