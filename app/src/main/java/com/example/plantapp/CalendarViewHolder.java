@@ -1,7 +1,10 @@
 package com.example.plantapp;
 
+import android.nfc.Tag;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +18,8 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
     public final View parentView;
     public final TextView dayOfMonth;
     private final CalendarAdapter.OnItemListener onItemListener;
+    private String Tag="CalendarViewHolderTAG";
+
     public CalendarViewHolder(@NonNull View itemView, CalendarAdapter.OnItemListener onItemListener, ArrayList<LocalDate> days)
     {
         super(itemView);
@@ -29,5 +34,6 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
     public void onClick(View view)
     {
         onItemListener.onItemClick(getAdapterPosition(), days.get(getAdapterPosition()));
+
     }
 }

@@ -13,14 +13,26 @@
         android:layout_margin="25dp"
         android:orientation="vertical"
         android:gravity="center">
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/background_wh_spinner"
+            android:id="@+id/sp_event"
+            android:gravity="center"
+            android:popupBackground="#ffffff"
+            android:textColor="#184A2C"
+            android:overlapAnchor="false"
+            android:popupElevation="10dp"
+            android:spinnerMode="dropdown"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Name"
+        android:text="Title"
         android:textSize="20sp"
+        android:id="@+id/tv_event_title"
         android:textAlignment="center"
         android:fontFamily="@font/poppins_bold"
         android:textColor="#184A2C"/>
@@ -39,6 +51,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:inputType="text"/>
 
+
     <TextView
         android:id="@+id/eventDateTV"
         android:layout_width="wrap_content"
@@ -51,17 +64,6 @@
         android:textAlignment="center"
         android:textColor="#184A2C"/>
 
-    <TextView
-        android:id="@+id/eventTimeTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Time"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="#184A2C"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"

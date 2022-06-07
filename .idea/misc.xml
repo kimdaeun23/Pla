@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_spinner.xml" value="0.1395" />
+        <entry key="app/src/main/res/drawable/background_wh_spinner.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/edge_btn.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/edge_infobox.xml" value="0.1835" />
         <entry key="app/src/main/res/drawable/edge_infotxtbox.xml" value="0.1835" />

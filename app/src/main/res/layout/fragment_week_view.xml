@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="60dp"
+        android:background="#EBFDF2">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
@@ -36,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Jun 2022"
+            android:text="June 2022"
             android:textSize="20sp"
             android:textAlignment="center"
             android:fontFamily="@font/poppins_bold"
@@ -137,8 +138,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="50dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
@@ -151,11 +151,18 @@
         android:layout_gravity="center"
         android:textSize="20sp"/>
 
-    <ListView
-        android:id="@+id/eventListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"/>
+<!--    <ListView-->
+<!--        android:id="@+id/eventListView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="5"-->
+<!--        android:dividerHeight="0px"-->
+<!--        android:divider="#ffffff"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eventdataRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </LinearLayout>

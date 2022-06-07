@@ -1,34 +1,68 @@
 package com.example.plantapp;
 
+import static android.content.ContentValues.TAG;
 import static com.example.plantapp.CalendarUtils.daysInWeekArray;
 import static com.example.plantapp.CalendarUtils.monthYearFromDate;
 
+import static java.security.AccessController.getContext;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Constants;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItemListener {
-    private TextView monthYearText;
-    private RecyclerView calendarRecyclerView;
+    private TextView monthYearText, eventCellplant;
+    private RecyclerView calendarRecyclerView,eventdataRecyclerView;
     private ListView eventListView;
     private Button btn_pre,btn_nx,btn_newevent;
+    EventDataAdapter madapter;
+    private String initdate="";
+    private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
+    private String exists="";
 
+    private EventDataViewModel eventDataViewModel;
+    private ArrayList<EventData> arrCard;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
     }
 
     @Nullable
@@ -37,7 +71,12 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
         View view = inflater.inflate(R.layout.fragment_week_view, container, false);
 
         initWidgets(view);
+
+//        eventDataViewModel.userInfo();
+        firebaseAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         setWeekView();
+//        setlist();
         btn_pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,10 +105,12 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
     {
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
         monthYearText = view.findViewById(R.id.monthYearTV);
-        eventListView = view.findViewById(R.id.eventListView);
+//        eventListView = view.findViewById(R.id.eventListView);
+        eventdataRecyclerView=view.findViewById(R.id.eventdataRecyclerView);
         btn_newevent = view.findViewById(R.id.btn_newevent);
         btn_nx = view.findViewById(R.id.btn_nx);
         btn_pre = view.findViewById(R.id.btn_pre);
+        eventCellplant=view.findViewById(R.id.eventCellplant);
     }
 
     private void setWeekView()
@@ -81,7 +122,7 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEventAdpater();
+//        setEventAdpater();
     }
 
 
@@ -89,6 +130,8 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
     public void onItemClick(int position, LocalDate date)
     {
         CalendarUtils.selectedDate = date;
+        initdate=date.toString();
+        setlist();
         setWeekView();
     }
 
@@ -96,14 +139,97 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
     public void onResume()
     {
         super.onResume();
-        setEventAdpater();
+
     }
 
-    public void setEventAdpater()
-    {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
-        EventAdapter eventAdapter = new EventAdapter(getContext(), dailyEvents);
-        eventListView.setAdapter(eventAdapter);
+//    public void setlist()
+//    {
+//        exititem();
+//        Log.d("존재여부",exists);
+////        if(exists.equals("exists")){
+//            arrCard = new ArrayList<>();
+//            Log.d("date",initdate);
+//            db.collection("users")
+//                    .document(firebaseAuth.getCurrentUser().getUid())
+//                    .collection("events")
+//                    .document(initdate)
+//                    .collection("plans")
+//                    .get()
+//                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                        @Override
+//                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                            for (QueryDocumentSnapshot item: queryDocumentSnapshots){
+//                                RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
+//                                String str_name = item.get("name").toString();
+//                                String str_eventCellplant = item.get("eventCellplant").toString();
+//                                String str_event_type = item.get("name").toString();
+//                                String str_date = item.get("name").toString();
+//                                arrCard.add(new EventData(str_name,str_date,str_eventCellplant,str_event_type));
+//                                madapter= new EventDataAdapter(arrCard);
+//                                eventdataRecyclerView.setLayoutManager(layoutManager);
+//                                madapter.notifyDataSetChanged();
+//                                eventdataRecyclerView.setAdapter(madapter);
+//                            }
+//                        }
+//                    });
+////        }
+////        else {
+////            Log.d(TAG, "Document does not exist!");
+////            exists="notexists";
+////        }
+//
+//    }
+
+    public void setlist(){
+        db.collection("users")
+                .document(firebaseAuth.getCurrentUser().getUid())
+                .collection("events")
+                .document(initdate)
+                .collection("plans")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            QuerySnapshot querySnapshot= task.getResult();
+                            if(querySnapshot.isEmpty()){
+                                Log.d(TAG, "Document not exists!");
+                                eventdataRecyclerView.setVisibility(View.GONE);
+                            }
+                            else{
+                                Log.d(TAG, "Document exists!");
+                                eventdataRecyclerView.setVisibility(View.VISIBLE);
+                                arrCard = new ArrayList<>();
+                                Log.d("date",initdate);
+                                db.collection("users")
+                                        .document(firebaseAuth.getCurrentUser().getUid())
+                                        .collection("events")
+                                        .document(initdate)
+                                        .collection("plans")
+                                        .get()
+                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                for (QueryDocumentSnapshot item: queryDocumentSnapshots){
+                                                    RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
+                                                    String str_name = item.get("name").toString();
+                                                    String str_eventCellplant = item.get("eventCellplant").toString();
+                                                    String str_event_type = item.get("name").toString();
+                                                    String str_date = item.get("name").toString();
+                                                    arrCard.add(new EventData(str_name,str_date,str_eventCellplant,str_event_type));
+                                                    madapter= new EventDataAdapter(arrCard);
+                                                    eventdataRecyclerView.setLayoutManager(layoutManager);
+                                                    madapter.notifyDataSetChanged();
+                                                    eventdataRecyclerView.setAdapter(madapter);
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+                    }
+                });
+
     }
+
 
 }

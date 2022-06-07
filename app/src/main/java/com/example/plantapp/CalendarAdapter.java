@@ -1,9 +1,12 @@
 package com.example.plantapp;
 
 import android.graphics.Color;
+import android.nfc.Tag;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,14 +43,19 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
     {
+        holder.parentView.setBackgroundColor(Color.parseColor("#EBFDF2"));
         final LocalDate date = days.get(position);
         if(date == null)
             holder.dayOfMonth.setText("");
         else
         {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
-            if(date.equals(CalendarUtils.selectedDate))
-                holder.parentView.setBackgroundColor(Color.LTGRAY);
+            if(date.equals(CalendarUtils.selectedDate)){
+                //일자 눌렀을때
+                holder.parentView.setBackgroundColor(Color.parseColor("#184A2C"));
+
+            }
+
         }
     }
 

@@ -161,7 +161,6 @@ public class AddFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(selectedImageUri != null){
-                    String[] arr = selectedImageUri.toString().split("/");
                     imageUrl=Long.toString(System.currentTimeMillis());
                     StorageReference storageRef=storage.getReference()
                             .child("Images")

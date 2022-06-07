@@ -4,31 +4,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Event
+public class EventData
 {
-    public static ArrayList<Event> eventsList = new ArrayList<>();
 
+     String name="";
+     String date="";
+     String eventCellplant="";
+     String event_type="";
 
-    public static ArrayList<Event> eventsForDate(LocalDate date)
-    {
-        ArrayList<Event> events = new ArrayList<>();
-
-        for(Event event : eventsList)
-        {
-            if(event.getDate().equals(date))
-                events.add(event);
-        }
-
-        return events;
-    }
-
-
-    private String name;
-    private LocalDate date;
-    private String eventCellplant;
-    private String event_type;
-
-    public Event(String name, LocalDate date, String eventCellplant, String event_type)
+    public EventData(String name, String date, String eventCellplant, String event_type)
     {
         this.name = name;
         this.date = date;
@@ -62,12 +46,12 @@ public class Event
         this.name = name;
     }
 
-    public LocalDate getDate()
+    public String getDate()
     {
         return date;
     }
 
-    public void setDate(LocalDate date)
+    public void setDate(String date)
     {
         this.date = date;
     }

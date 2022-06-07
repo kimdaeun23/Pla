@@ -52,6 +52,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseStorage storage=FirebaseStorage.getInstance();
         StorageReference storageRef=storage.getReference();
+
         storageRef.child("Images")
                 .child(firebaseAuth.getCurrentUser().getUid())
                 .child("plants")
