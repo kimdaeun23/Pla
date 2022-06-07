@@ -51,7 +51,6 @@ public class PlantFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
         plantViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(PlantViewModel.class);
         plantViewModel.getUserInfo().observe(this, new Observer<ArrayList<Plant>>() {
             @Override
@@ -59,6 +58,8 @@ public class PlantFragment extends Fragment {
                 arrCard = cards;
                 adapter = new PlantAdapter(cards, viewPager2);
                 viewPager2.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
             }
         });
     }
@@ -68,31 +69,18 @@ public class PlantFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plant, container, false);
 
-//        iv_plant=(ImageView) view.findViewById(R.id.iv_plant);
         viewPager2 = view.findViewById(R.id.my_card_viewpager);
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
         plantViewModel.userInfo();
         profile=view.findViewById(R.id.profile);
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), ProfileActivity.class));
             }
         });
-
-//        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-//                tv_plantname.setText(arrCard.get(position).getName());
-//                tv_plantday.setText(arrCard.get(position).getBirthday());
-//            }
-//        });
-
-
-
-
 
         return view;
     }

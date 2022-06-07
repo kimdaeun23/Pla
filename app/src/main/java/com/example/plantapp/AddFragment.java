@@ -133,9 +133,6 @@ public class AddFragment extends Fragment {
                 monthOfYear+=1;
                 birth_date=year+"-"+monthOfYear+"-"+dayOfMonth;
 
-//                //dday계산
-//                mCalendar = new GregorianCalendar();
-//                Dday=getDday(year,monthOfYear,dayOfMonth);
                 Calendar calendar=Calendar.getInstance();
                 tyear=calendar.get(Calendar.YEAR);
                 tmonth=calendar.get(Calendar.MONTH);
@@ -146,13 +143,13 @@ public class AddFragment extends Fragment {
                 dcalender.set(year,monthOfYear,dayOfMonth);
                 t=calendar.getTimeInMillis();
                 d=dcalender.getTimeInMillis();
-                r=(d-t)/ONE_DAY;
-                resultNumber=(int)r;
-                if(resultNumber>=0){
-                    Dday=String.format("D-%d",resultNumber= Math.abs(resultNumber));
+                r=(t-d)/ONE_DAY;
+                resultNumber=(int)r+1;
+                if(resultNumber<0){
+                    Dday=String.format("D%d",resultNumber);
                 }
                 else{
-                    Dday=String.format("D+%d",resultNumber= Math.abs(resultNumber)+1);
+                    Dday=String.format("D+%d",resultNumber+1);
                 }
             }
         });

@@ -31,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
@@ -39,9 +40,16 @@ public class PlantInfoDialog extends Fragment {
 
     private String TAG = "CardDialogTAG";
     private Context context;
+    private String water_cycle, birth_date;
+    private int tyear,tmonth,tday;
+    private int ONE_DAY= 24 * 60 * 60 * 1000;
+    // 현재 날짜를 알기 위해 사용
+    private String Dday;
+    private long d,t,r;
+    private int resultNumber=0;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    FirebaseStorage storage=FirebaseStorage.getInstance();
-    StorageReference storageRef=storage.getReference();
+    FirebaseStorage db=FirebaseStorage.getInstance();
+    StorageReference storageRef=db.getReference();
 
     // 커스텀 다이얼로그의 각 위젯들을 정의한다.
     private MaterialToolbar cardView_toolbar;
@@ -58,6 +66,31 @@ public class PlantInfoDialog extends Fragment {
     ArrayAdapter<String> arrayAdapter;
     static ArrayList<String> arr;
     PlantViewModel plantViewModel;
+
+//    public void dday(){
+//        Calendar calendar=Calendar.getInstance();
+//        tyear=calendar.get(Calendar.YEAR);
+//        tmonth=calendar.get(Calendar.MONTH);
+//        tday=calendar.get(Calendar.DAY_OF_MONTH);
+//
+//        int birth_year=Integer.parseInt(birth_date.substring(0,4));
+//        int birth_month=Integer.parseInt(birth_date.substring(5,6));
+//        int birth_day=Integer.parseInt(birth_date.substring(7,8));
+//
+//        Calendar dcalender=Calendar.getInstance();
+//        birth_month-=1;
+//        dcalender.set(birth_year,birth_month,birth_day);
+//        t=calendar.getTimeInMillis();
+//        d=dcalender.getTimeInMillis();
+//        r=(d-t)/ONE_DAY;
+//        resultNumber=(int)r;
+//        if(resultNumber>=0){
+//            Dday=String.format("D-%d",resultNumber= Math.abs(resultNumber));
+//        }
+//        else{
+//            Dday=String.format("D+%d",resultNumber= Math.abs(resultNumber)+1);
+//        }
+//    }
 
     public void callFunction(Plant cardInfo){
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
@@ -117,9 +150,15 @@ public class PlantInfoDialog extends Fragment {
             }
         });
         tv_plantday.setText(cardInfo.getBirthday());
+        birth_date=cardInfo.getBirthday();
         tv_plantname.setText(cardInfo.getName());
         tv_info_watercycle.setText(cardInfo.getWater_cycle());
+
+//        dday();
+//        cardInfo.setDday(Dday);
         tv_info_dday.setText(cardInfo.getDday());
+
+
 
         cardView_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +173,7 @@ public class PlantInfoDialog extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked){
-
+                    Toast.makeText(context,"물주기활성화",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(context,"물주기비활성화",Toast.LENGTH_SHORT).show();

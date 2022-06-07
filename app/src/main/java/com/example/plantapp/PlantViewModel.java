@@ -35,4 +35,6 @@ public class PlantViewModel extends AndroidViewModel {
     public MutableLiveData<String> getCardId() {
         return cardId;
     }
+
+
 }
