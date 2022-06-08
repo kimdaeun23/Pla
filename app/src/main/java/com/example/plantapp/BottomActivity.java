@@ -105,5 +105,8 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     public void replaceprofile(){
         startActivity(new Intent(this, ProfileActivity.class));
     }
+    public void replacebluetooth(){
+        startActivity(new Intent(this, BluetoothActivity.class));
+    }
 
 }

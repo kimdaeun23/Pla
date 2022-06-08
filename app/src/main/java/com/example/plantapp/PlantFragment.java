@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,7 +57,6 @@ public class PlantFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Plant> cards) {
                 arrCard = cards;
-
                 adapter = new PlantAdapter(cards, viewPager2);
                 viewPager2.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
@@ -82,6 +82,7 @@ public class PlantFragment extends Fragment {
                 startActivity(new Intent(getActivity(), ProfileActivity.class));
             }
         });
+
 
         return view;
     }

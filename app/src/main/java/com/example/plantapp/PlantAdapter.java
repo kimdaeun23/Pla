@@ -52,14 +52,15 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     private FirebaseStorage storage=FirebaseStorage.getInstance();
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
     private StorageReference storageRef=storage.getReference();
-    private String birth,name,predday,newdday;
-    private String water_cycle, birth_date;
+    private String birth,name,predday;
     private int tyear,tmonth,tday;
     private int ONE_DAY= 24 * 60 * 60 * 1000;
     // 현재 날짜를 알기 위해 사용
     private String Dday;
     private long d,t,r;
     private int resultNumber=0;
+
+    private int cnt=0;
 
     public PlantAdapter(ArrayList<Plant> cardModel, ViewPager2 viewPager2) {
         this.cardModel = cardModel;
@@ -82,6 +83,40 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         name=cardModel.get(i).getName();
         Log.d("name",name);
         predday=cardModel.get(i).getDday();
+        cnt=cardModel.get(i).getFlower_water();
+
+        switch (cnt){
+            case 5:
+                holder.info_watericon1.setVisibility(View.VISIBLE);
+                holder.info_watericon2.setVisibility(View.VISIBLE);
+                holder.info_watericon3.setVisibility(View.VISIBLE);
+                holder.info_watericon4.setVisibility(View.VISIBLE);
+                holder.info_watericon5.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                holder.info_watericon1.setVisibility(View.VISIBLE);
+                holder.info_watericon2.setVisibility(View.VISIBLE);
+                holder.info_watericon3.setVisibility(View.VISIBLE);
+                holder.info_watericon4.setVisibility(View.GONE);
+                holder.info_watericon5.setVisibility(View.GONE);
+                break;
+            case 1:
+                holder.info_watericon1.setVisibility(View.VISIBLE);
+                holder.info_watericon2.setVisibility(View.GONE);
+                holder.info_watericon3.setVisibility(View.GONE);
+                holder.info_watericon4.setVisibility(View.GONE);
+                holder.info_watericon5.setVisibility(View.GONE);
+                break;
+            default:
+                holder.info_watericon1.setVisibility(View.VISIBLE);
+                holder.info_watericon2.setVisibility(View.GONE);
+                holder.info_watericon3.setVisibility(View.GONE);
+                holder.info_watericon4.setVisibility(View.GONE);
+                holder.info_watericon5.setVisibility(View.GONE);
+
+        }
+
+
 
         storageRef.child("Images")
                 .child(firebaseAuth.getCurrentUser().getUid())
@@ -98,6 +133,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                 Toast.makeText(viewPager2.getContext(), "이미지로드실패", Toast.LENGTH_SHORT).show();
             }
         });
+
         db.collection("users")
                 .document(firebaseAuth.getCurrentUser().getUid())
                 .collection("plants")
@@ -145,23 +181,6 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                                             Log.w(TAG, "Transaction failure.", e);
                                         }
                                     });
-//                                    holder.tv_plantname.setText(cardModel.get(i).getName());
-//                                    holder.tv_plantday.setText(cardModel.get(i).getDday());
-//                                    storageRef.child("Images")
-//                                            .child(firebaseAuth.getCurrentUser().getUid())
-//                                            .child("plants")
-//                                            .child(cardModel.get(i).getImageUrl())
-//                                            .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                                        @Override
-//                                        public void onSuccess(Uri uri) {
-//                                            Glide.with(holder.itemView.getContext()).load(uri).into(holder.iv_profile);
-//                                        }
-//                                    }).addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            Toast.makeText(viewPager2.getContext(), "이미지로드실패", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    });
 
                                 } else {
                                     Log.d("실패", String.valueOf(snapshot.get("birthday")));
@@ -230,7 +249,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             t=calendar.getTimeInMillis();
             d=dcalender.getTimeInMillis();
             r=(t-d)/ONE_DAY;
-            resultNumber=(int)r+1;
+            resultNumber=(int)r;
             if(resultNumber<0){
                 Dday=String.format("D%d",resultNumber);
             }
@@ -253,13 +272,20 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
 
     public class PlantViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_profile;
-        TextView tv_plantname,tv_plantday;
+        TextView tv_plantname,tv_plantday,
+                info_watericon1,info_watericon2,info_watericon3,info_watericon4,info_watericon5,
+                info_lighticon1,info_lighticon2,info_lighticon3,info_lighticon4,info_lighticon5;;
 
         public PlantViewHolder(@NonNull View view) {
             super(view);
             iv_profile = view.findViewById(R.id.iv_profile);
             tv_plantname=view.findViewById(R.id.tv_plantname);
             tv_plantday=view.findViewById(R.id.tv_plantday);
+            info_watericon1= view.findViewById(R.id.info_watericon1);
+            info_watericon2= view.findViewById(R.id.info_watericon2);
+            info_watericon3= view.findViewById(R.id.info_watericon3);
+            info_watericon4= view.findViewById(R.id.info_watericon4);
+            info_watericon5= view.findViewById(R.id.info_watericon5);
         }
     }
 }

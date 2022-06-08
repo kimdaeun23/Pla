@@ -286,17 +286,15 @@
                     android:layout_height="match_parent"
                     android:gravity="bottom"
                     android:layout_marginTop="30dp">
-                    <ToggleButton
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_water"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tg_wateron"
-                        android:checked="false"
-                        android:textOff="물주기"
-                        android:textOn="STOP"
                         android:background="@drawable/edge_btn"
-                        android:textColor="#ffffff"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppins_semibold"/>
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="물주기"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -305,17 +303,15 @@
                     android:gravity="bottom"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="50dp">
-                    <ToggleButton
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_light"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tg_lighton"
-                        android:checked="false"
-                        android:textOff="광합성"
-                        android:textOn="STOP"
                         android:background="@drawable/edge_btn"
-                        android:textColor="#ffffff"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/poppins_semibold"/>
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="광합성"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
