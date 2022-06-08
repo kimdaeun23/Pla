@@ -28,6 +28,10 @@ public class PlantViewModel extends AndroidViewModel {
         myCardModel.userInfo();
         myCardModel.getCardId();
     }
+
+    public void changedday(int size){
+        myCardModel.changdday(size);
+    }
     public MutableLiveData<ArrayList<Plant>> getUserInfo() {
         return userInfo;
     }

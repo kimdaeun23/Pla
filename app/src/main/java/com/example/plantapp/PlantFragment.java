@@ -56,6 +56,7 @@ public class PlantFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Plant> cards) {
                 arrCard = cards;
+
                 adapter = new PlantAdapter(cards, viewPager2);
                 viewPager2.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
