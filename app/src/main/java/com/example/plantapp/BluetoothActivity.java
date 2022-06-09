@@ -1,5 +1,7 @@
 package com.example.plantapp;
 
+import static java.security.AccessController.getContext;
+
 import android.Manifest;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -33,17 +35,17 @@ public class BluetoothActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bluetooth);
         bt = new BluetoothSPP(this); //Initializing
 
-        videoView=(VideoView) findViewById(R.id.video_view);
-        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.watertwo));
-//        videoView.setOnPreparedListener(onPrepared);
-
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
-            }
-        });
-        videoView.start();
+//        videoView=(VideoView) findViewById(R.id.video_view);
+//        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.watertwo));
+////        videoView.setOnPreparedListener(onPrepared);
+//
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mediaPlayer) {
+//                mediaPlayer.setLooping(true);
+//            }
+//        });
+//        videoView.start();
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -195,4 +197,5 @@ public class BluetoothActivity extends AppCompatActivity {
             }
         }
     }
+
 }

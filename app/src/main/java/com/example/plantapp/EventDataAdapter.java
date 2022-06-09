@@ -75,14 +75,14 @@ public class EventDataAdapter extends RecyclerView.Adapter<EventDataAdapter.Even
             eventCellTV.setText(eventData.getName());
             eventCellplant.setText(eventData.getEventCellplant());
 
-            if((eventData.getEvent_type()).equals("기타")){
-                iv_eventtype.setBackgroundResource(R.drawable.sprout);
-            }
-            else if((eventData.getEvent_type()).equals("물주기")){
+            if((eventData.getEvent_type()).equals("물주기")){
                 iv_eventtype.setBackgroundResource(R.drawable.drop);
             }
             else if((eventData.getEvent_type()).equals("광합성")){
                 iv_eventtype.setBackgroundResource(R.drawable.sun);
+            }
+            else{
+                iv_eventtype.setBackgroundResource(R.drawable.sprout);
             }
         }
     }

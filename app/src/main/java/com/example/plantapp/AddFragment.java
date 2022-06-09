@@ -176,6 +176,7 @@ public class AddFragment extends Fragment {
                             plantacoount.setDday(Dday);
                             String name = et_name.getText().toString();
                             plantacoount.setName(name);
+                            plantacoount.setWater_lastday("");
                             addplant(plantacoount);
                         }
                     });

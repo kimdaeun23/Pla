@@ -225,13 +225,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
 //            }
 //        });
     }
-    public void reset() {
-        Intent intent = ((Activity) context).getIntent();
-        ((Activity) context).finish(); //현재 액티비티 종료 실시
-        ((Activity) context).overridePendingTransition(0, 0); //효과 없애기
-        ((Activity) context).startActivity(intent); //현재 액티비티 재실행 실시
-        ((Activity) context).overridePendingTransition(0, 0); //효과 없애기
-    }
+
     public String dday(String birth){
         int i=getItemCount();
             Calendar calendar=Calendar.getInstance();

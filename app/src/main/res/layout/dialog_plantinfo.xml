@@ -184,6 +184,7 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:layout_marginRight="10dp"
+                        android:visibility="gone"
                         android:id="@+id/info_watericon2"
                         android:textColor="#82B4FF"
                         android:textSize="15dp"/>
@@ -192,6 +193,7 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:layout_marginRight="10dp"
+                        android:visibility="gone"
                         android:id="@+id/info_watericon3"
                         android:textColor="#82B4FF"
                         android:textSize="15dp"/>
@@ -202,6 +204,7 @@
                         android:layout_marginRight="10dp"
                         android:id="@+id/info_watericon4"
                         android:textColor="#82B4FF"
+                        android:visibility="gone"
                         android:textSize="15dp"/>
                     <com.example.plantapp.FontAwesomeTextLight
                         android:layout_width="wrap_content"
@@ -209,6 +212,7 @@
                         android:text=""
                         android:layout_marginRight="10dp"
                         android:id="@+id/info_watericon5"
+                        android:visibility="gone"
                         android:textColor="#82B4FF"
                         android:textSize="15dp"/>
                     </LinearLayout>

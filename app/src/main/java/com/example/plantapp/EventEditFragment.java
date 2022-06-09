@@ -69,6 +69,7 @@ public class EventEditFragment extends Fragment {
             public void onClick(View view) {
                 if(eventType.equals("기타")){
                     eventName = eventNameET.getText().toString();
+                    eventPlant="";
                 }
                 if(eventType.equals("물주기")){
                     eventPlant=eventNameET.getText().toString();

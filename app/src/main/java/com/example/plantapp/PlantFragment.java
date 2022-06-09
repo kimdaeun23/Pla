@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+//import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -46,6 +48,8 @@ public class PlantFragment extends Fragment {
     PlantAdapter adapter;
     private PlantViewModel plantViewModel;
     private TextView profile;
+    SwipeRefreshLayout swipeLayout;
+
 
 
     @Override
@@ -69,7 +73,21 @@ public class PlantFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plant, container, false);
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
 
+
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+
+            public void onRefresh() {
+                adapter.notifyDataSetChanged();
+
+                swipeLayout.setRefreshing(false);
+
+            }
+
+        });
         viewPager2 = view.findViewById(R.id.my_card_viewpager);
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
@@ -90,4 +108,6 @@ public class PlantFragment extends Fragment {
     private int arrSize(ArrayList<Plant> arrCard) {
         return arrCard.size();
     }
+
+
 }
