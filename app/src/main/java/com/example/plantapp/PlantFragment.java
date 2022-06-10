@@ -73,21 +73,21 @@ public class PlantFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plant, container, false);
-        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
-
-
-        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-
-            @Override
-
-            public void onRefresh() {
-                adapter.notifyDataSetChanged();
-
-                swipeLayout.setRefreshing(false);
-
-            }
-
-        });
+//        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
+//
+//
+//        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//
+//            @Override
+//
+//            public void onRefresh() {
+//                adapter.notifyDataSetChanged();
+//
+//                swipeLayout.setRefreshing(false);
+//
+//            }
+//
+//        });
         viewPager2 = view.findViewById(R.id.my_card_viewpager);
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
