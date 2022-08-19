@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/back"
-            android:padding="15dp"
             android:text=""
             android:textColor="#184A2C"
             android:textSize="20dp"/>

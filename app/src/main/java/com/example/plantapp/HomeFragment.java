@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
     private RecyclerView calendarRecyclerView;
     private Button btn_pre,btn_nx;
     private TextView btn_weekly;
-    private TextView profile;
+    private TextView profile,search;
     private FragmentManager fragmentManager;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +49,13 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
         btn_pre = view.findViewById(R.id.btn_pre);
         btn_nx = view.findViewById(R.id.btn_nx);
         profile=view.findViewById(R.id.profile);
+        search=view.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

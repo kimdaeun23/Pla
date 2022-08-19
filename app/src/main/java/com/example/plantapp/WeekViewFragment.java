@@ -56,7 +56,7 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
     private String exists="";
-    private TextView profile;
+    private TextView profile,search;
 
     private EventDataViewModel eventDataViewModel;
     private ArrayList<EventData> arrCard;
@@ -99,6 +99,13 @@ public class WeekViewFragment extends Fragment implements CalendarAdapter.OnItem
             @Override
             public void onClick(View view) {
                 ((BottomActivity)getActivity()).replaceeventedit();
+            }
+        });
+        search=view.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
             }
         });
         profile=view.findViewById(R.id.profile);

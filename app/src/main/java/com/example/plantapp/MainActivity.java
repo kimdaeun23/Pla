@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //define view objects
     EditText editTextEmail;
     EditText editTextPassword;
+    EditText editTextnickname;
     Button buttonSignup;
     TextView textviewSingin;
     TextView textviewMessage;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class)); //추가해 줄 ProfileActivity
         }
         //initializing views
+        editTextnickname = (EditText) findViewById(R.id.editTextnickname);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         textviewSingin= (TextView) findViewById(R.id.textViewSignin);
@@ -75,7 +77,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //사용자가 입력하는 email, password를 가져온다.
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String nickname =editTextnickname.getText().toString().trim();
         //email과 password가 비었는지 아닌지를 체크 한다.
+        if(TextUtils.isEmpty(nickname)){
+            Toast.makeText(this, "Nickname을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
@@ -101,18 +108,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                             HashMap<Object, String> hashMap = new HashMap<>();
 
-                            hashMap.put("uid",uid);
+                            hashMap.put("id",uid);
                             hashMap.put("email", email.replace(".", ">"));
+                            hashMap.put("nickname", nickname);
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference reference = database.getReference("Users");
                             reference.child(uid).setValue(hashMap);
 
-                            User usermodel=new User();
-                            usermodel.email=email;
-                            usermodel.setEmail(email);
+                            User usermodel=new User(email,nickname,uid);
 
                             Map<Object, String> users = new HashMap<>();
-                            users.put("email", email);
+                            users.put("email", email.replace(".", ">"));
+                            users.put("nickname",nickname);
+                            users.put("id",uid);
 
                             firestore.collection("users").document(uid)
                                     .set(users)

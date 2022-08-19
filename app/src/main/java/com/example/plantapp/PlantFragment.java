@@ -47,7 +47,7 @@ public class PlantFragment extends Fragment {
     ViewPager2 viewPager2;
     PlantAdapter adapter;
     private PlantViewModel plantViewModel;
-    private TextView profile;
+    private TextView profile,search;
     SwipeRefreshLayout swipeLayout;
 
 
@@ -93,7 +93,13 @@ public class PlantFragment extends Fragment {
         tv_plantday=view.findViewById(R.id.tv_plantday);
         plantViewModel.userInfo();
         profile=view.findViewById(R.id.profile);
-
+        search=view.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

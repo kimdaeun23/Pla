@@ -31,6 +31,8 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     private AddFragment fragmentadd = new AddFragment();
     private WeekViewFragment fragmentweekView= new WeekViewFragment();
     private EventEditFragment fragmenteventEdit= new EventEditFragment();
+    private CommunityFragment fragmentcommunity=new CommunityFragment();
+    private LikeFragment fragmentlike=new LikeFragment();
     private FloatingActionButton fab_main;
     private FragmentTransaction transaction = fragmentManager.beginTransaction();
 
@@ -79,6 +81,12 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
                     break;
                 case R.id.plantFragment:
                     transaction.replace(R.id.nav_host_fragment, fragmentplant).commitAllowingStateLoss();
+                    break;
+                case R.id.communityFragment:
+                    transaction.replace(R.id.nav_host_fragment, fragmentcommunity).commitAllowingStateLoss();
+                    break;
+                case R.id.likeFragment:
+                    transaction.replace(R.id.nav_host_fragment, fragmentlike).commitAllowingStateLoss();
                     break;
 //                case R.id.fab_main:
 //                    transaction.replace(R.id.nav_host_fragment, fragmentadd).commitAllowingStateLoss();

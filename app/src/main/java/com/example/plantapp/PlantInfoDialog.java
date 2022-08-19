@@ -158,7 +158,7 @@ public class PlantInfoDialog extends Fragment {
         info_lighticon5 = dlg.findViewById(R.id.info_lighticon5);
 
         btn_water = dlg.findViewById(R.id.btn_water);
-        btn_light = dlg.findViewById(R.id.btn_light);
+//        btn_light = dlg.findViewById(R.id.btn_light);
 
         storageRef.child("Images")
                 .child(firebaseAuth.getCurrentUser().getUid())
@@ -252,7 +252,7 @@ public class PlantInfoDialog extends Fragment {
                             }
                         }
                     });
-
+        }
 
 
             tv_plantday.setText(cardInfo.getBirthday());
@@ -329,14 +329,14 @@ public class PlantInfoDialog extends Fragment {
                 }
             });
 
-            btn_light.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+//            btn_light.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                }
+//            });
 
-                }
-            });
 
 
-        }
     }
 }

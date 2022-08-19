@@ -13,5 +13,17 @@
         android:title="plant"
         app:showAsAction="always"
         android:enabled="true"/>
+    <item
+        android:id="@+id/communityFragment"
+        android:icon="@drawable/play_solid"
+        android:title="community"
+        app:showAsAction="always"
+        android:enabled="true"/>
+    <item
+        android:id="@+id/likeFragment"
+        android:icon="@drawable/heart_solid"
+        android:title="like"
+        app:showAsAction="always"
+        android:enabled="true"/>
 
 </menu>

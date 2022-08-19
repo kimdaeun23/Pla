@@ -20,5 +20,15 @@
         android:name="com.example.plantapp.PlantFragment"
         android:label="fragment_plant"
         tools:layout="@layout/fragment_plant" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.example.plantapp.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="com.example.plantapp.LikeFragment"
+        android:label="fragment_like"
+        tools:layout="@layout/fragment_like" />
 
 </navigation>

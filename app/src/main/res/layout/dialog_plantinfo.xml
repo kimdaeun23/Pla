@@ -301,22 +301,22 @@
                         android:textSize="20dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="50dp">
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_light"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/edge_btn"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="광합성"
-                        android:textColor="@color/white"
-                        android:textSize="20dp" />
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                  ㅇ  android:layout_marginBottom="50dp">-->
+<!--                    <androidx.appcompat.widget.AppCompatButton-->
+<!--                        android:id="@+id/btn_light"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/edge_btn"-->
+<!--                        android:fontFamily="@font/poppins_semibold"-->
+<!--                        android:text="광합성"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="20dp" />-->
+<!--                </LinearLayout>-->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -50,6 +50,28 @@
                 android:textColor="#184A2C"
                 android:textSize="17dp"/>
             <EditText
+                android:id="@+id/editTextnickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter nickname"
+                android:background="@null"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_light"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edge_txtbox">
+            <com.example.plantapp.FontAwesomeTextLight
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text=""
+                android:textColor="#184A2C"
+                android:textSize="17dp"/>
+            <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
