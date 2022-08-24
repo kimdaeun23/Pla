@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment implements CalendarAdapter.OnItemList
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ProfileActivity.class));
+                ((BottomActivity)getActivity()).replaceprofile();
             }
         });
 

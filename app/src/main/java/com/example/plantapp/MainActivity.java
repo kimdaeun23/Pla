@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 profile 액티비티를 연다.
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class)); //추가해 줄 ProfileActivity
+            startActivity(new Intent(getApplicationContext(), ProfileFragment.class)); //추가해 줄 ProfileActivity
         }
         //initializing views
         editTextnickname = (EditText) findViewById(R.id.editTextnickname);
@@ -81,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //email과 password가 비었는지 아닌지를 체크 한다.
         if(TextUtils.isEmpty(nickname)){
             Toast.makeText(this, "Nickname을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(nickname.length()<2){
+            Toast.makeText(this, "Nickname 최소 2글자 이상 ", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(email)){
@@ -140,7 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(new Intent(getApplicationContext(), BottomActivity.class));
                         } else {
                             //에러발생시
-                            textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");
                             Toast.makeText(MainActivity.this, "등록 에러!", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();

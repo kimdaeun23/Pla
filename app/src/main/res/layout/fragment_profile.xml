@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
+    tools:context=".ProfileFragment"
     android:background="@drawable/background_register">
 
     <LinearLayout
@@ -12,13 +12,6 @@
         android:layout_height="match_parent"
         android:layout_margin="25dp"
         android:orientation="vertical">
-        <com.example.plantapp.FontAwesomeTextLight
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/back"
-            android:text=""
-            android:textColor="#184A2C"
-            android:textSize="20dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,10 +33,22 @@
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"/>
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edge_btn"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="post"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
+            android:layout_marginBottom="40dp"
             android:orientation="vertical">
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonLogout"

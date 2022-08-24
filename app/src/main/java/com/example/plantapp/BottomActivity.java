@@ -1,23 +1,15 @@
 package com.example.plantapp;
 
-import static android.view.Gravity.CENTER;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,6 +24,7 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     private WeekViewFragment fragmentweekView= new WeekViewFragment();
     private EventEditFragment fragmenteventEdit= new EventEditFragment();
     private CommunityFragment fragmentcommunity=new CommunityFragment();
+    private ProfileFragment profileActivity=new ProfileFragment();
     private LikeFragment fragmentlike=new LikeFragment();
     private FloatingActionButton fab_main;
     private FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -97,6 +90,10 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
             return true;
         }
     }
+    public void replaceprofile(){
+        FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
+        transactionfrag.replace(R.id.nav_host_fragment, profileActivity).commit();
+    }
     public void replaceweekview(){
         FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
         transactionfrag.replace(R.id.nav_host_fragment, fragmentweekView).commit();
@@ -109,9 +106,6 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     public void replaceplant(){
         FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
         transactionfrag.replace(R.id.nav_host_fragment, fragmentplant).commit();
-    }
-    public void replaceprofile(){
-        startActivity(new Intent(this, ProfileActivity.class));
     }
     public void replacebluetooth(){
         startActivity(new Intent(this, BluetoothActivity.class));

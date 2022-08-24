@@ -13,13 +13,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
         android:usesPermissionFlags="neverForLocation" />
-
-    <!-- Needed only if your app makes the device discoverable to Bluetooth
-         devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-
-    <!-- Needed only if your app communicates with already-paired Bluetooth
-         devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
@@ -50,9 +44,6 @@
             android:name=".MainActivity"
             android:exported="false"/>
         <activity
-            android:name=".ProfileActivity"
-            android:exported="false"/>
-        <activity
             android:name=".BottomActivity"
             android:exported="false"/>
         <activity
@@ -60,6 +51,9 @@
             android:exported="false"/>
         <activity
             android:name=".SearchActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".PostActivity"
             android:exported="false"/>
     </application>
 

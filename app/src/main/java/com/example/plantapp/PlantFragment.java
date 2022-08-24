@@ -103,7 +103,7 @@ public class PlantFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ProfileActivity.class));
+                ((BottomActivity)getActivity()).replaceprofile();
             }
         });
 
