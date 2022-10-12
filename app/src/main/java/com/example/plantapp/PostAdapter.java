@@ -96,6 +96,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 mContext.startActivity(intent);
             }
         });
+        holder.image_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,BottomActivity.class);
+                intent.putExtra("publisherid",post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

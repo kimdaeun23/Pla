@@ -65,7 +65,7 @@ public class PostActivity extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PostActivity.this,ProfileFragment.class));
+                startActivity(new Intent(PostActivity.this,BottomActivity.class));
                 finish();
             }
         });
@@ -144,7 +144,7 @@ public class PostActivity extends AppCompatActivity {
 
 
                         progressDialog.dismiss();
-                        startActivity(new Intent(PostActivity.this,ProfileFragment.class));
+                        startActivity(new Intent(PostActivity.this,BottomActivity.class));
                         finish();
 
                     }else{
