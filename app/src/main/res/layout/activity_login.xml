@@ -104,16 +104,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="bottom">
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/white"
                 android:background="@drawable/edge_btn"
                 android:fontFamily="@font/poppins_semibold"
-                android:textSize="20dp"
-                android:text="Login" />
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

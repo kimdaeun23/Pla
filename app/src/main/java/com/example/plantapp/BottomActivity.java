@@ -45,13 +45,13 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
         Bundle intent=getIntent().getExtras();
         if (intent != null){
             String publisher = intent.getString("publisherid");
-            SharedPreferences.Editor editor= getSharedPreferences("PREFSn",MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor= getSharedPreferences("PREFS",MODE_PRIVATE).edit();
             editor.putString("profileid",publisher);
             editor.apply();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new OtherprofileFragment()).commit();
         }else{
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CommunityFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new HomeFragment()).commit();
         }
 
     }

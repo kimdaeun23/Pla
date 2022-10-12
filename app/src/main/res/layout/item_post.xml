@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:id="@+id/likes"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/poppins_light"
             android:textColor="#76B536"/>
         <TextView
             android:layout_width="wrap_content"

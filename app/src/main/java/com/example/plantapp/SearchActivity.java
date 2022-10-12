@@ -1,6 +1,7 @@
 package com.example.plantapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,6 +34,8 @@ public class SearchActivity extends AppCompatActivity {
     private UserAdapter userAdapter;
     private List<User> mUsers;
     private EditText search_bar;
+
+    String postid,publisherid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

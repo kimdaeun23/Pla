@@ -32,7 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ProfileFragment extends Fragment{
+public class OtherprofileFragment extends Fragment{
 
     //전버튼들코드
     private static final String TAG = "ProfileActivity";
@@ -63,6 +63,8 @@ public class ProfileFragment extends Fragment{
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
+        SharedPreferences prefs=getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        profileid=prefs.getString("profileid","none");
 
         image_profile=view.findViewById(R.id.image_profile);
         options=view.findViewById(R.id.options);
@@ -74,18 +76,6 @@ public class ProfileFragment extends Fragment{
         edit_profile=view.findViewById(R.id.edit_profile);
         my_fotos=view.findViewById(R.id.my_fotos);
         saved_fotos=view.findViewById(R.id.saved_fotos);
-
-        //initializing firebase authentication object
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
-        if (firebaseAuth.getCurrentUser() == null) {
-            startActivity(new Intent(getContext(), LoginActivity.class));
-        }
-
-        //유저가 있다면, null이 아니면 계속 진행
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        profileid=user.getUid();
 
         userInfo();
         getFollowers();
@@ -166,7 +156,6 @@ public class ProfileFragment extends Fragment{
 
                 username.setText(user.getNickname());
                 fullname.setText(user.getNickname());
-
 
             }
 
