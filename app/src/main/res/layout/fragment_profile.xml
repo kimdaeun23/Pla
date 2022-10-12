@@ -29,6 +29,14 @@
                     android:id="@+id/username"
                     android:textColor="#184A2C"/>
                 <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_postadd"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="55dp"
+                    android:id="@+id/postadd"/>
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_options"

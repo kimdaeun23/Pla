@@ -19,6 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,16 +35,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class OtherprofileFragment extends Fragment{
-
-    //전버튼들코드
-    private static final String TAG = "ProfileActivity";
-    private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    private Button buttonLogout,buttonPost;
-    private TextView textivewDelete;
-    private String uid;
-
 
     ImageView image_profile,options;
     TextView posts,followers,following,fullname,username;
@@ -49,6 +48,10 @@ public class OtherprofileFragment extends Fragment{
     ImageButton my_fotos,saved_fotos;
     FirebaseUser firebaseUser;
     String profileid;
+
+    RecyclerView recyclerView;
+    MyFotoAdapter myFotoAdapter;
+    List<Post> postList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,9 +80,18 @@ public class OtherprofileFragment extends Fragment{
         my_fotos=view.findViewById(R.id.my_fotos);
         saved_fotos=view.findViewById(R.id.saved_fotos);
 
+        recyclerView=view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new GridLayoutManager(getContext(),3);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        postList=new ArrayList<>();
+        myFotoAdapter=new MyFotoAdapter(getContext(),postList);
+        recyclerView.setAdapter(myFotoAdapter);
+
         userInfo();
         getFollowers();
         getNrPosts();
+        myFotos();
 
         if (profileid.equals(firebaseUser.getUid())){
             edit_profile.setText("Edit Profile");
@@ -110,32 +122,6 @@ public class OtherprofileFragment extends Fragment{
             }
         });
 
-
-
-/*전버튼들코드
-        //initializing views
-        buttonLogout = (Button) view.findViewById(R.id.buttonLogout);
-        buttonPost=(Button) view.findViewById(R.id.buttonPost);
-        textivewDelete = (TextView) view.findViewById(R.id.textviewDelete);
-
-        //initializing firebase authentication object
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
-        if (firebaseAuth.getCurrentUser() == null) {
-            startActivity(new Intent(getContext(), LoginActivity.class));
-        }
-
-        //유저가 있다면, null이 아니면 계속 진행
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        uid = user.getUid();
-
-
-        //logout button event
-        buttonPost.setOnClickListener(this);
-        buttonLogout.setOnClickListener(this);
-        textivewDelete.setOnClickListener(this);
-전버튼들코드*/
 
         return view;
 
@@ -238,48 +224,28 @@ public class OtherprofileFragment extends Fragment{
         });
     }
 
-
-    /*전버튼들코드    implements View.OnClickListener  이거 추가해야함.
-    @Override
-    public void onClick(View view){
-            if (view == buttonLogout) {
-                firebaseAuth.signOut();
-                startActivity(new Intent(getContext(), LoginActivity.class));
-            }
-            if (view==buttonPost){
-                startActivity(new Intent(getContext(), PostActivity.class));
-            }
-
-            if (view == textivewDelete) {
-                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(getContext());
-                alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                user.delete()
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(getContext(), "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
-//                                            finish();
-                                                startActivity(new Intent(getContext(), MainActivity.class));
-                                            }
-                                        });
-                            }
-                        }
-                );
-                alert_confirm.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getContext(), "취소", Toast.LENGTH_LONG).show();
+    private void myFotos(){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    Post post=snapshot1.getValue(Post.class);
+                    if (post.getPublisher().equals(profileid)){
+                        postList.add(post);
                     }
-                });
-                alert_confirm.show();
-
+                }
+                Collections.reverse(postList);
+                myFotoAdapter.notifyDataSetChanged();
             }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-전버튼들코드*/
+            }
+        });
+    }
+
 
 }

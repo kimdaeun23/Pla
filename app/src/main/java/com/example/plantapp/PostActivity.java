@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ import com.google.firebase.storage.StorageTask;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class PostActivity extends AppCompatActivity {
@@ -63,7 +65,7 @@ public class PostActivity extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PostActivity.this,BottomActivity.class));
+                startActivity(new Intent(PostActivity.this,ProfileFragment.class));
                 finish();
             }
         });
@@ -74,6 +76,7 @@ public class PostActivity extends AppCompatActivity {
                 uploadImage();
             }
         });
+
         image_added.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +87,8 @@ public class PostActivity extends AppCompatActivity {
         });
 
     }
+
+
     private String getFileExtension(Uri uri){
         ContentResolver contentResolver=getContentResolver();
         MimeTypeMap mime=MimeTypeMap.getSingleton();
@@ -139,7 +144,7 @@ public class PostActivity extends AppCompatActivity {
 
 
                         progressDialog.dismiss();
-                        startActivity(new Intent(PostActivity.this,BottomActivity.class));
+                        startActivity(new Intent(PostActivity.this,ProfileFragment.class));
                         finish();
 
                     }else{

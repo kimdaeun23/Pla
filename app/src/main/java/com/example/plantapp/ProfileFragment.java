@@ -1,5 +1,6 @@
 package com.example.plantapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,23 +36,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class ProfileFragment extends Fragment{
 
     //전버튼들코드
     private static final String TAG = "ProfileActivity";
     private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    private Button buttonLogout,buttonPost;
-    private TextView textivewDelete;
-    private String uid;
 
 
-    ImageView image_profile,options;
+    ImageView image_profile,options,postadd;
     TextView posts,followers,following,fullname,username;
     Button edit_profile;
     ImageButton my_fotos,saved_fotos;
     FirebaseUser firebaseUser;
     String profileid;
+
+    RecyclerView recyclerView;
+    MyFotoAdapter myFotoAdapter;
+    List<Post> postList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +67,7 @@ public class ProfileFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_otherprofile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
@@ -74,6 +82,7 @@ public class ProfileFragment extends Fragment{
         edit_profile=view.findViewById(R.id.edit_profile);
         my_fotos=view.findViewById(R.id.my_fotos);
         saved_fotos=view.findViewById(R.id.saved_fotos);
+        postadd=view.findViewById(R.id.postadd);
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -87,9 +96,18 @@ public class ProfileFragment extends Fragment{
         FirebaseUser user = firebaseAuth.getCurrentUser();
         profileid=user.getUid();
 
+        recyclerView=view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new GridLayoutManager(getContext(),3);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        postList=new ArrayList<>();
+        myFotoAdapter=new MyFotoAdapter(getContext(),postList);
+        recyclerView.setAdapter(myFotoAdapter);
+
         userInfo();
         getFollowers();
         getNrPosts();
+        myFotos();
 
         if (profileid.equals(firebaseUser.getUid())){
             edit_profile.setText("Edit Profile");
@@ -120,29 +138,22 @@ public class ProfileFragment extends Fragment{
             }
         });
 
+        postadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), PostActivity.class));
+            }
+        });
+
 
 
 /*전버튼들코드
         //initializing views
         buttonLogout = (Button) view.findViewById(R.id.buttonLogout);
-        buttonPost=(Button) view.findViewById(R.id.buttonPost);
+
         textivewDelete = (TextView) view.findViewById(R.id.textviewDelete);
 
-        //initializing firebase authentication object
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
-        if (firebaseAuth.getCurrentUser() == null) {
-            startActivity(new Intent(getContext(), LoginActivity.class));
-        }
-
-        //유저가 있다면, null이 아니면 계속 진행
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        uid = user.getUid();
-
-
         //logout button event
-        buttonPost.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
 전버튼들코드*/
@@ -248,7 +259,28 @@ public class ProfileFragment extends Fragment{
             }
         });
     }
+    private void myFotos(){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    Post post=snapshot1.getValue(Post.class);
+                    if (post.getPublisher().equals(profileid)){
+                        postList.add(post);
+                    }
+                }
+                Collections.reverse(postList);
+                myFotoAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     /*전버튼들코드    implements View.OnClickListener  이거 추가해야함.
     @Override
