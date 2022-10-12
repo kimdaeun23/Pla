@@ -1,6 +1,7 @@
 package com.example.plantapp;
 
 public class Post {
+
     private String postid,postimage,description,publisher;
 
     public Post(String postid, String postimage, String description, String publisher) {
