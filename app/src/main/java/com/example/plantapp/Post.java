@@ -8,6 +8,7 @@ public class Post {
         this.postimage = postimage;
         this.description = description;
         this.publisher = publisher;
+
     }
 
     public Post(){

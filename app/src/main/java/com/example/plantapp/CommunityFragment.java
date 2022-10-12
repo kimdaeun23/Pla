@@ -27,6 +27,7 @@ public class CommunityFragment extends Fragment {
     private PostAdapter postAdapter;
     private List<Post> postLists;
 
+
     private List<String> followingList;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
