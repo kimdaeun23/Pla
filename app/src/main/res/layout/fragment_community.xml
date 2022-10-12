@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"
         android:paddingTop="60dp"
+        android:paddingBottom="50dp"
         tools:ignore="MissingConstraints" />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
