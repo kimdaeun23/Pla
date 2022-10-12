@@ -1,6 +1,7 @@
 package com.example.plantapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,19 +42,18 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
 
         fab_main.setOnClickListener(this);
 
+        Bundle intent=getIntent().getExtras();
+        if (intent != null){
+            String publisher = intent.getString("publisherid");
+            SharedPreferences.Editor editor= getSharedPreferences("PREFSn",MODE_PRIVATE).edit();
+            editor.putString("profileid",publisher);
+            editor.apply();
 
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new ProfileFragment()).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CommunityFragment()).commit();
+        }
 
-//        BottomNavigationView bottomNavigation = BottomActivity.this.findViewById(R.id.bottomNavigationView);
-//        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.plantFragment:
-//                        startActivity(new Intent(BottomActivity.this, PlantFragment.class));
-//                }
-//                return true;
-//            }
-//        });
     }
 
     @Override
