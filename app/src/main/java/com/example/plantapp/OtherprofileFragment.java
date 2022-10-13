@@ -103,6 +103,14 @@ public class OtherprofileFragment extends Fragment{
             saved_fotos.setVisibility(View.GONE);
         }
 
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),OptionsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

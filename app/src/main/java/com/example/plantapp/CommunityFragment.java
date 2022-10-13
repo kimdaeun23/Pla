@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class CommunityFragment extends Fragment {
     private TextView profile;
 
     private List<String> followingList;
+    ProgressBar progressBar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class CommunityFragment extends Fragment {
         postAdapter=new PostAdapter(getContext(),postLists);
         recyclerView.setAdapter(postAdapter);
         profile=view.findViewById(R.id.profile);
+        progressBar=view.findViewById(R.id.progress_circular);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +106,7 @@ public class CommunityFragment extends Fragment {
                     }
                 }
                 postAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
