@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bar"
-        android:background="?android:windowBackground"
-        tools:ignore="MissingConstraints">
+        android:background="?android:windowBackground">
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,7 +1,6 @@
 package com.example.plantapp;
 
 import android.app.ProgressDialog;
-import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;

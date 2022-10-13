@@ -64,7 +64,9 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                 if (holder.getAdapterPosition()==0){
                     myStory(holder.addstory_text,holder.story_plus,true);
                 }else{
-
+                    Intent intent=new Intent(mContext,StoryActivity.class);
+                    intent.putExtra("userid",story.getUserid());
+                    mContext.startActivity(intent);
                 }
             }
         });
@@ -148,7 +150,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "View story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                Intent intent=new Intent(mContext,StoryActivity.class);
+                                intent.putExtra("userid",FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                mContext.startActivity(intent);
+                                dialogInterface.dismiss();
                             }
                         });
                         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Add story", new DialogInterface.OnClickListener() {
