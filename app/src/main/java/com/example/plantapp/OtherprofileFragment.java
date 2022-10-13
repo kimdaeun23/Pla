@@ -53,6 +53,7 @@ public class OtherprofileFragment extends Fragment{
     MyFotoAdapter myFotoAdapter;
     List<Post> postList;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,7 @@ public class OtherprofileFragment extends Fragment{
         myFotoAdapter=new MyFotoAdapter(getContext(),postList);
         recyclerView.setAdapter(myFotoAdapter);
 
+
         userInfo();
         getFollowers();
         getNrPosts();
@@ -121,7 +123,6 @@ public class OtherprofileFragment extends Fragment{
                 }
             }
         });
-
 
         return view;
 
@@ -246,6 +247,5 @@ public class OtherprofileFragment extends Fragment{
             }
         });
     }
-
 
 }
