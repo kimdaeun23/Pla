@@ -26,13 +26,25 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="-55dp"
                     android:src="@drawable/logo"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_inbox"
-                    android:layout_marginRight="20dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_marginRight="55dp"
+                    android:src="@drawable/ic_inbox" />
+
+                <com.example.plantapp.FontAwesomeTextLight
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/profile"
+                    android:padding="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=""
+                    android:textColor="#184A2C"
+                    android:textSize="20dp"/>
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>

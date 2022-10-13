@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,7 @@ public class CommunityFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postLists;
-
+    private TextView profile;
 
     private List<String> followingList;
     @Override
@@ -48,11 +49,20 @@ public class CommunityFragment extends Fragment {
         postLists=new ArrayList<>();
         postAdapter=new PostAdapter(getContext(),postLists);
         recyclerView.setAdapter(postAdapter);
+        profile=view.findViewById(R.id.profile);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((BottomActivity)getActivity()).replaceprofile();
+            }
+        });
 
         checkFollowing();
         return view;
 
     }
+
 
     private void checkFollowing(){
         followingList=new ArrayList<>();
