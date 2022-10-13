@@ -113,16 +113,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             hashMap.put("id",uid);
                             hashMap.put("email", email.replace(".", ">"));
                             hashMap.put("nickname", nickname);
+                            hashMap.put("imageurl","");
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference reference = database.getReference("Users");
                             reference.child(uid).setValue(hashMap);
 
-                            User usermodel=new User(email,nickname,uid);
+//                            User usermodel=new User(email,nickname,uid);
+                            User usermodel=new User();
+                            usermodel.setEmail(email);
+                            usermodel.setNickname(nickname);
+                            usermodel.setId(uid);
 
                             Map<Object, String> users = new HashMap<>();
                             users.put("email", email.replace(".", ">"));
                             users.put("nickname",nickname);
                             users.put("id",uid);
+                            users.put("imageurl","");
 
                             firestore.collection("users").document(uid)
                                     .set(users)

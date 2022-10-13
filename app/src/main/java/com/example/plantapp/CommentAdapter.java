@@ -50,14 +50,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(comment.getComment());
         getUserInfo(holder.image_profile,holder.username, comment.getPublisher());
 
-//        holder.comment.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(mContext,MainActivity.class);
-//                intent.putExtra("publisherid",comment.getPublisher());
-//                mContext.startActivity(intent);
-//            }
-//        });
         holder.image_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +86,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
-//                Glide.with(mContext).load(user.getImageurl()).into(imageView);
+                if (user.getImageurl().equals("")){
+
+                }else {
+                    Glide.with(mContext).load(user.getImageurl()).into(imageView);
+                }
                 username.setText(user.getNickname());
             }
 

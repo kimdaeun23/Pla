@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,16 +70,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             user=mUsers.get(position);
         }
         holder.nickname.setText(mUsers.get(position).getNickname());
-//        Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+        if (user.getImageurl().equals("")){
+
+        }else {
+            Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+        }
         isFollowing(mUsers.get(position).getId(),holder.btn_follow);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                SharedPreferences.Editor editor= mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-//                editor.putString("profileid",user.getId());
-//                editor.apply();
+
                 Intent intent=new Intent(mContext,BottomActivity.class);
                 intent.putExtra("publisherid",mUsers.get(position).getId());
                 mContext.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
