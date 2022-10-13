@@ -86,8 +86,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
-                if (user.getImageurl().equals("")){
-
+                if (user.getImageurl().equals("noprofile")){
+                    Glide.with(mContext).load(R.drawable.seedling_solid).into(imageView);
                 }else {
                     Glide.with(mContext).load(user.getImageurl()).into(imageView);
                 }

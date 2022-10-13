@@ -30,6 +30,7 @@
                     android:src="@drawable/ic_close" />
 
                 <TextView
+                    android:id="@+id/post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -37,7 +38,6 @@
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="POST"
-                    android:id="@+id/post"
                     android:textColor="#184A2C"
                     android:textSize="16sp" />
             </RelativeLayout>

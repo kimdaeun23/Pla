@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,13 +69,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         if ((mUsers.get(position).getId()).equals(firebaseUser.getUid())){
             holder.btn_follow.setVisibility(View.GONE);
             user=mUsers.get(position);
+            if (user.getImageurl().equals("noprofile")){
+                Glide.with(mContext).load(R.drawable.seedling_solid).into(holder.image_profile);
+
+            }else {
+                Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+            }
         }
-        holder.nickname.setText(mUsers.get(position).getNickname());
-        if (user.getImageurl().equals("")){
+        user=mUsers.get(position);
+        if (user.getImageurl().equals("noprofile")){
+            Glide.with(mContext).load(R.drawable.seedling_solid).into(holder.image_profile);
 
         }else {
             Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
         }
+        holder.nickname.setText(mUsers.get(position).getNickname());
+
         isFollowing(mUsers.get(position).getId(),holder.btn_follow);
 
 

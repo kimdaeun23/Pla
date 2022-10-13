@@ -139,6 +139,7 @@ public class ProfileFragment extends Fragment{
                 String btn=edit_profile.getText().toString();
 
                 if(btn.equals("Edit Profile")){
+                    startActivity(new Intent(getContext(),EditProfileActivity.class));
 
                 }else if(btn.equals("follow")){
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
@@ -205,8 +206,8 @@ public class ProfileFragment extends Fragment{
 
                 User user=snapshot.getValue(User.class);
 
-                if (user.getImageurl().equals("")){
-
+                if (user.getImageurl().equals("noprofile")){
+                    Glide.with(getContext()).load(R.drawable.seedling_solid).into(image_profile);
                 }else{
                     Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
                 }

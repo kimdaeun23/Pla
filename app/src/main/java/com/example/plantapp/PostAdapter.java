@@ -258,8 +258,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                User user=snapshot.getValue(User.class);
-               if (user.getImageurl().equals("")){
-
+               if (user.getImageurl().equals("noprofile")){
+                   Glide.with(mContext).load(R.drawable.seedling_solid).into(image_profile);
                }else{
                    Glide.with(mContext).load(user.getImageurl()).into(image_profile);
                }

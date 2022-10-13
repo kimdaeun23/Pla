@@ -110,8 +110,8 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
-                if (user.getImageurl().equals("")){
-
+                if (user.getImageurl().equals("noprofile")){
+                    Glide.with(getApplicationContext()).load(R.drawable.seedling_solid).into(image_profile);
                 }else{
                     Glide.with(getApplicationContext()).load(user.getImageurl()).into(image_profile);
                 }
