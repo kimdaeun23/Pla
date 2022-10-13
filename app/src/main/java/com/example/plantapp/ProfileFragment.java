@@ -179,6 +179,26 @@ public class ProfileFragment extends Fragment{
             }
         });
 
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),FollowersActivity.class);
+                intent.putExtra("id",profileid);
+                intent.putExtra("title","followers");
+                startActivity(intent);
+            }
+        });
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),FollowersActivity.class);
+                intent.putExtra("id",profileid);
+                intent.putExtra("title","following");
+                startActivity(intent);
+            }
+        });
+
+
 
 /*전버튼들코드
         //initializing views

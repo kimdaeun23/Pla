@@ -126,6 +126,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Post post=snapshot.getValue(Post.class);
+
                 Glide.with(mContext).load(post.getPostimage()).into(imageView);
             }
 

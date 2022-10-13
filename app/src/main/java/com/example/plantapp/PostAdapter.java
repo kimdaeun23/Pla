@@ -60,7 +60,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         Post post=mPost.get(position);
 
-        Glide.with(mContext).load(post.getPostimage()).apply(new RequestOptions().placeholder(R.drawable.seedling_solid)).into(holder.post_image);
+        if (post.getPostimage()!=null){
+            Glide.with(mContext).load(post.getPostimage()).apply(new RequestOptions().placeholder(R.drawable.seedling_solid)).into(holder.post_image);
+        }
         if(post.getDescription().equals("")){
             holder.description.setVisibility(View.GONE);
         }else {
@@ -175,6 +177,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 mContext.startActivity(intent);
             }
         });
+        holder.likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                        Intent intent=new Intent(mContext,FollowersActivity.class);
+                        intent.putExtra("id",post.getPostid());
+                        intent.putExtra("title","likes");
+                        mContext.startActivity(intent);
+
+            }
+        });
         holder.more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,18 +198,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                             case R.id.edit:
                                 editPost(post.getPostid());
                                 return true;
-                            case R.id.delete:
-                                FirebaseDatabase.getInstance().getReference("Posts")
-                                        .child(post.getPostid()).removeValue()
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()){
-                                                    Toast.makeText(mContext,"Deleted",Toast.LENGTH_LONG).show();
-                                                }
-                                            }
-                                        });
-                                return true;
+//                            case R.id.delete:
+//                                FirebaseDatabase.getInstance().getReference("Posts")
+//                                        .child(post.getPostid()).removeValue()
+//                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<Void> task) {
+//                                                if (task.isSuccessful()){
+//                                                    Toast.makeText(mContext,"Deleted",Toast.LENGTH_LONG).show();
+//                                                }
+//                                            }
+//                                        });
+//                                return true;
                             default:
                                 return false;
                         }
@@ -206,7 +218,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 popupMenu.inflate(R.menu.post_menu);
                 if (!post.getPublisher().equals(firebaseUser.getUid())){
                     popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
-                    popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
+//                    popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
                 }
                 popupMenu.show();
             }

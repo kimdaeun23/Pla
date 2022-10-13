@@ -26,14 +26,6 @@
                     android:layout_marginLeft="-55dp"
                     android:src="@drawable/logo"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="55dp"
-                    android:src="@drawable/ic_inbox" />
-
                 <com.example.plantapp.FontAwesomeTextLight
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
