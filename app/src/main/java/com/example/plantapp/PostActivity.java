@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -142,6 +143,7 @@ public class PostActivity extends AppCompatActivity {
 
                         progressDialog.dismiss();
                         startActivity(new Intent(PostActivity.this,BottomActivity.class));
+
                         finish();
 
                     }else{

@@ -1,13 +1,20 @@
 package com.example.plantapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -15,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -166,6 +175,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 mContext.startActivity(intent);
             }
         });
+        holder.more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(mContext,view);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+                            case R.id.edit:
+                                editPost(post.getPostid());
+                                return true;
+                            case R.id.delete:
+                                FirebaseDatabase.getInstance().getReference("Posts")
+                                        .child(post.getPostid()).removeValue()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    Toast.makeText(mContext,"Deleted",Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.inflate(R.menu.post_menu);
+                if (!post.getPublisher().equals(firebaseUser.getUid())){
+                    popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
+                    popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
+                }
+                popupMenu.show();
+            }
+        });
     }
 
     @Override
@@ -175,7 +220,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView image_profile,post_image,like,comment,save;
+        public ImageView image_profile,post_image,like,comment,save,more;
         public TextView username,likes,publisher,description,comments;
 
         public ViewHolder(@NonNull View itemView) {
@@ -191,6 +236,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             publisher=itemView.findViewById(R.id.publisher);
             description=itemView.findViewById(R.id.description);
             comments=itemView.findViewById(R.id.comments);
+            more=itemView.findViewById(R.id.more);
         }
     }
 
@@ -307,4 +353,54 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         reference.push().setValue(hashMap);
     }
+
+    private void editPost(String postid){
+        AlertDialog.Builder aledrtDialog=new AlertDialog.Builder(mContext);
+        aledrtDialog.setTitle("Edit post");
+
+        EditText editText=new EditText(mContext);
+        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+        editText.setLayoutParams(lp);
+        aledrtDialog.setView(editText);
+
+        getText(postid,editText);
+
+        aledrtDialog.setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                HashMap<String,Object> hashMap=new HashMap<>();
+                hashMap.put("description",editText.getText().toString());
+                FirebaseDatabase.getInstance().getReference("Posts")
+                        .child(postid).updateChildren(hashMap);
+            }
+        });
+        aledrtDialog.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        aledrtDialog.show();
+    }
+
+    private void getText(String postid,EditText editText){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts")
+                .child(postid);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                editText.setText(snapshot.getValue(Post.class).getDescription());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
