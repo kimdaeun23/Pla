@@ -64,6 +64,9 @@
         <activity
             android:name=".OptionsActivity"
             android:exported="false"/>
+        <activity
+            android:name=".AddStoryActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

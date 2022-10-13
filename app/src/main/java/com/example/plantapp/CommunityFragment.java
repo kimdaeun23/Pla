@@ -30,6 +30,10 @@ public class CommunityFragment extends Fragment {
     private List<Post> postLists;
     private TextView profile;
 
+    private RecyclerView recyclerView_story;
+    private StoryAdapter storyAdapter;
+    private List<Story> storyList;
+
     private List<String> followingList;
     ProgressBar progressBar;
     @Override
@@ -53,6 +57,14 @@ public class CommunityFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
         profile=view.findViewById(R.id.profile);
         progressBar=view.findViewById(R.id.progress_circular);
+
+        recyclerView_story=view.findViewById(R.id.recycler_view_story);
+        recyclerView_story.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerView_story.setLayoutManager(linearLayoutManager1);
+        storyList=new ArrayList<>();
+        storyAdapter=new StoryAdapter(getContext(),storyList);
+        recyclerView_story.setAdapter(storyAdapter);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +94,7 @@ public class CommunityFragment extends Fragment {
                 }
 
                 readPosts();
+                readStory();
             }
 
             @Override
@@ -107,6 +120,37 @@ public class CommunityFragment extends Fragment {
                 }
                 postAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void readStory(){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Story");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long timecurrent=System.currentTimeMillis();
+                storyList.clear();
+                storyList.add(new Story("",0,0,"",FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                for (String id: followingList){
+                    int countStory=0;
+                    Story story=null;
+                    for (DataSnapshot snapshot1: snapshot.child(id).getChildren()){
+                        story=snapshot1.getValue(Story.class);
+                        if (timecurrent > story.getTimestart()&&timecurrent<story.getTimeend()){
+                            countStory++;
+                        }
+                    }
+                    if (countStory>0){
+                        storyList.add(story);
+                    }
+                }
+                storyAdapter.notifyDataSetChanged();
             }
 
             @Override
