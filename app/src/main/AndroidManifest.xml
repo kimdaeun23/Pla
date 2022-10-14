@@ -61,7 +61,7 @@
             android:exported="false"/>
         <activity
             android:name=".OptionsActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AddStoryActivity"
             android:exported="false"/>

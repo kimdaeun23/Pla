@@ -198,19 +198,6 @@ public class ProfileFragment extends Fragment{
             }
         });
 
-
-
-/*전버튼들코드
-        //initializing views
-        buttonLogout = (Button) view.findViewById(R.id.buttonLogout);
-
-        textivewDelete = (TextView) view.findViewById(R.id.textviewDelete);
-
-        //logout button event
-        buttonLogout.setOnClickListener(this);
-        textivewDelete.setOnClickListener(this);
-전버튼들코드*/
-
         return view;
 
     }

@@ -60,4 +60,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     implementation 'com.github.shts:StoriesProgressView:3.0.0'
+
+    // 액셀 라이브러리
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
 }

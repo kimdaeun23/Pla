@@ -37,6 +37,7 @@ public class PlantFragment extends Fragment {
     PlantAdapter adapter;
     private PlantViewModel plantViewModel;
     private TextView profile,search;
+    private ImageView dictionary;
     SwipeRefreshLayout swipeLayout;
 
 
@@ -80,6 +81,7 @@ public class PlantFragment extends Fragment {
         viewPager2 = view.findViewById(R.id.my_card_viewpager);
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
+        dictionary=view.findViewById(R.id.dictionary);
         plantViewModel.userInfo();
         profile=view.findViewById(R.id.profile);
         search=view.findViewById(R.id.search);
@@ -93,6 +95,12 @@ public class PlantFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ((BottomActivity)getActivity()).replaceprofile();
+            }
+        });
+        dictionary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((BottomActivity)getActivity()).replacedictionary();
             }
         });
 

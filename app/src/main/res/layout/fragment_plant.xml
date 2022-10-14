@@ -14,6 +14,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="right">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dictionary"
+                android:padding="14dp"
+                android:src="@drawable/ic_dictionary"/>
             <com.example.plantapp.FontAwesomeTextLight
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

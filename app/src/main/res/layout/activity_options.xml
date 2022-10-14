@@ -11,19 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
         android:background="?android:windowBackground"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#184A2C"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/settings"
-            android:textColor="#184A2C"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_margin="8dp"
-            android:textSize="20sp"
-            android:text="Settings"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -37,6 +25,19 @@
         android:layout_margin="8dp"
         android:textSize="20sp"
         android:text="Log out"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#184A2C"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings"
+        android:textColor="#184A2C"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:text="Delete account"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
