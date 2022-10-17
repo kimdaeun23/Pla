@@ -100,7 +100,7 @@ public class PlantFragment extends Fragment {
         dictionary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((BottomActivity)getActivity()).replacedictionary();
+                startActivity(new Intent(getActivity(), DictionaryActivity.class));
             }
         });
 

@@ -28,16 +28,17 @@
                     android:id="@+id/close"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit Profile"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/close"
                     android:fontFamily="@font/poppins_bold"
-                    android:textSize="18sp"
+                    android:text="Edit Profile"
                     android:textColor="#184A2C"
-                    android:layout_toEndOf="@+id/close"/>
+                    android:textSize="18sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

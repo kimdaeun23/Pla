@@ -71,6 +71,15 @@
         <activity
             android:name=".FollowersActivity"
             android:exported="false"/>
+        <activity
+            android:name=".DictionaryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Dictionary_InfoActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".EditDictionaryActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

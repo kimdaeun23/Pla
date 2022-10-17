@@ -28,7 +28,6 @@ public class SearchActivity extends AppCompatActivity {
     private List<User> mUsers;
     private EditText search_bar;
 
-    String postid,publisherid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

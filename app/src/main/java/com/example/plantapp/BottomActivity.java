@@ -26,7 +26,7 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
     private EventEditFragment fragmenteventEdit= new EventEditFragment();
     private CommunityFragment fragmentcommunity=new CommunityFragment();
     private ProfileFragment fragmentprofile=new ProfileFragment();
-    private DictionaryFragment fragmentdictionary=new DictionaryFragment();
+    private DictionaryActivity fragmentdictionary=new DictionaryActivity();
     private LikeFragment fragmentlike=new LikeFragment();
     private FloatingActionButton fab_main;
     private FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -92,10 +92,7 @@ public class BottomActivity extends AppCompatActivity implements View.OnClickLis
         FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
         transactionfrag.replace(R.id.nav_host_fragment, fragmentprofile).commit();
     }
-    public void replacedictionary(){
-        FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
-        transactionfrag.replace(R.id.nav_host_fragment, fragmentdictionary).commit();
-    }
+
     public void replaceweekview(){
         FragmentTransaction transactionfrag = fragmentManager.beginTransaction();
         transactionfrag.replace(R.id.nav_host_fragment, fragmentweekView).commit();
