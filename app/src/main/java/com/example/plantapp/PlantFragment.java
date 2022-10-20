@@ -1,6 +1,7 @@
 package com.example.plantapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class PlantFragment extends Fragment {
     PlantAdapter adapter;
     private PlantViewModel plantViewModel;
     private TextView profile,search;
-    private ImageView dictionary;
+    private ImageView dictionary,store1,store2,store3,store4,store5,store6;
     SwipeRefreshLayout swipeLayout;
 
 
@@ -63,25 +64,17 @@ public class PlantFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plant, container, false);
-//        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
-//
-//
-//        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//
-//            @Override
-//
-//            public void onRefresh() {
-//                adapter.notifyDataSetChanged();
-//
-//                swipeLayout.setRefreshing(false);
-//
-//            }
-//
-//        });
+
         viewPager2 = view.findViewById(R.id.my_card_viewpager);
         tv_plantname=view.findViewById(R.id.tv_plantname);
         tv_plantday=view.findViewById(R.id.tv_plantday);
         dictionary=view.findViewById(R.id.dictionary);
+        store1=view.findViewById(R.id.store1);
+        store2=view.findViewById(R.id.store2);
+        store3=view.findViewById(R.id.store3);
+        store4=view.findViewById(R.id.store4);
+        store5=view.findViewById(R.id.store5);
+        store6=view.findViewById(R.id.store6);
         plantViewModel.userInfo();
         profile=view.findViewById(R.id.profile);
         search=view.findViewById(R.id.search);
@@ -101,6 +94,54 @@ public class PlantFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), DictionaryActivity.class));
+            }
+        });
+        store1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://smartstore.naver.com/gapjone"));
+                startActivity(intent);
+            }
+        });
+        store2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://smartstore.naver.com/hsflower"));
+                startActivity(intent);
+            }
+        });
+        store3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.depanse.co.kr/"));
+                startActivity(intent);
+            }
+        });
+        store4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.simpol.co.kr/main/main.php"));
+                startActivity(intent);
+            }
+        });
+        store5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://smartstore.naver.com/shopfortuna"));
+                startActivity(intent);
+            }
+        });
+        store6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.xplant.co.kr/"));
+                startActivity(intent);
             }
         });
 
