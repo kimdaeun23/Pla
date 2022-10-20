@@ -80,6 +80,9 @@
         <activity
             android:name=".EditDictionaryActivity"
             android:exported="false"/>
+        <activity
+            android:name=".RecoActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

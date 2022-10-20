@@ -39,7 +39,7 @@ import jxl.read.biff.BiffException;
 
 public class DictionaryActivity extends AppCompatActivity {
     private Dictionary dictionary;
-    private ImageView dictionary_add;
+    private ImageView dictionary_add,reco1,reco2,reco3,reco4;
     private RecyclerView recyclerView;
     private FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
@@ -59,6 +59,10 @@ public class DictionaryActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         dictionary_add=findViewById(R.id.dictionary_add);
+        reco1=findViewById(R.id.reco1);
+        reco2=findViewById(R.id.reco2);
+        reco3=findViewById(R.id.reco3);
+        reco4=findViewById(R.id.reco4);
 
         if ((firebaseUser.getUid()).equals("eYA69vvENVQ8NPXXoWjLt33swyb2")){
             dictionary_add.setVisibility(View.VISIBLE);
