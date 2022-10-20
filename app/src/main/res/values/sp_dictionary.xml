@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="사전식물종류">
+        <item>없음</item>
+        <item>초보집사</item>
+        <item>공기정화</item>
+        <item>게으른</item>
+        <item>집꾸미기</item>
+    </string-array>
+</resources>

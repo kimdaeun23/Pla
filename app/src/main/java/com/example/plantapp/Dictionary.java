@@ -9,14 +9,16 @@ public class Dictionary {
     public String tip="";
     public String imageurl="";
     public String place="";
+    public String sp_dictionary="";
 
-    public Dictionary(String name, String water, String temp, String tip, String imageurl, String place) {
+    public Dictionary(String name, String water, String temp, String tip, String imageurl, String place, String sp_dictionary) {
         this.name = name;
         this.water = water;
         this.temp = temp;
         this.tip = tip;
         this.imageurl=imageurl;
         this.place=place;
+        this.sp_dictionary=sp_dictionary;
     }
 
     public Dictionary(){
@@ -69,5 +71,13 @@ public class Dictionary {
 
     public void setTip(String tip) {
         this.tip = tip;
+    }
+
+    public String getSp_dictionary() {
+        return sp_dictionary;
+    }
+
+    public void setSp_dictionary(String sp_dictionary) {
+        this.sp_dictionary = sp_dictionary;
     }
 }

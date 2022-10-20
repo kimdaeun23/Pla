@@ -102,6 +102,39 @@ public class DictionaryActivity extends AppCompatActivity {
 
             }
         });
+
+        reco1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DictionaryActivity.this, RecoActivity.class);
+                intent.putExtra("reco", "reco1");
+                startActivity(intent);
+            }
+        });
+        reco2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DictionaryActivity.this, RecoActivity.class);
+                intent.putExtra("reco", "reco2");
+                startActivity(intent);
+            }
+        });
+        reco3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DictionaryActivity.this, RecoActivity.class);
+                intent.putExtra("reco", "reco3");
+                startActivity(intent);
+            }
+        });
+        reco4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DictionaryActivity.this, RecoActivity.class);
+                intent.putExtra("reco", "reco4");
+                startActivity(intent);
+            }
+        });
     }
 
     private void readUsers(){

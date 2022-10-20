@@ -5,46 +5,49 @@
     android:layout_height="match_parent"
     tools:context=".RecoActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bar"
-        android:background="?android:attr/windowBackground">
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground"
-            android:id="@+id/toolbar">
-            <com.example.plantapp.FontAwesomeTextLight
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/search"
-                android:text=""
-                android:layout_marginRight="10dp"
-                android:textColor="#184A2C"
-                android:textSize="25dp"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/dictionary_add"
-                android:visibility="gone"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_dictionary_add"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/search_bar"
-                android:background="@android:color/transparent"
-                android:hint="plantname..."
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"/>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="200dp"
+        android:background="@color/reco1"
+        android:elevation="30dp"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="230dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="25dp"
+                android:text="초보 식물 집사도 키우기 쉬운 식물"
+                android:id="@+id/tv_reco"
+                android:textColor="#184A2C"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:layout_width="190dp"
+                android:layout_height="150dp"
+                android:id="@+id/iv_reco"
+                android:src="@drawable/reco1" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bar" />
+        android:layout_below="@+id/banner" />
 </RelativeLayout>

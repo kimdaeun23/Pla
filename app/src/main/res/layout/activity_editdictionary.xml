@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +31,7 @@
                         android:layout_alignParentStart="true"/>
 
                     <TextView
+                        android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -40,7 +39,6 @@
                         android:layout_toEndOf="@+id/close"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Add Plant Dictionary"
-                        android:id="@+id/title"
                         android:textColor="#184A2C"
                         android:textSize="18sp" />
 
@@ -261,8 +259,19 @@
                                 android:fontFamily="@font/poppins_semibold"/>
                             </LinearLayout>
                         </LinearLayout>
-
                     </LinearLayout>
+                    <Spinner
+                        android:layout_marginTop="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/background_wh_spinner"
+                        android:id="@+id/sp_dictionary"
+                        android:gravity="center"
+                        android:popupBackground="#ffffff"
+                        android:textColor="#184A2C"
+                        android:overlapAnchor="false"
+                        android:popupElevation="10dp"
+                        android:spinnerMode="dropdown"/>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

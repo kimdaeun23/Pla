@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ public class EditDictionaryActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     EditText et_name,et_water,et_temp,et_place,et_tip;
+    Spinner sp_dictionary;
     TextView save;
     ImageView iv_profile;
     private Uri mImageUri;
@@ -59,6 +62,10 @@ public class EditDictionaryActivity extends AppCompatActivity {
         et_tip=findViewById(R.id.tip);
         save=findViewById(R.id.save);
         iv_profile=findViewById(R.id.iv_profile);
+        sp_dictionary=findViewById(R.id.sp_dictionary);
+        ArrayAdapter sp_dictionary_Adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.사전식물종류, android.R.layout.simple_spinner_dropdown_item);
+        sp_dictionary_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_dictionary.setAdapter(sp_dictionary_Adapter);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         storageRef = FirebaseStorage.getInstance().getReference("dictionary");
@@ -96,6 +103,7 @@ public class EditDictionaryActivity extends AppCompatActivity {
         temp = et_temp.getText().toString();
         place = et_place.getText().toString();
         tip = et_tip.getText().toString();
+        String sp = sp_dictionary.getSelectedItem().toString();
 
         ProgressDialog pd=new ProgressDialog(this);
         pd.setMessage("Uploading");
@@ -130,6 +138,7 @@ public class EditDictionaryActivity extends AppCompatActivity {
                         hashMap.put("place", place);
                         hashMap.put("temp", temp);
                         hashMap.put("tip", tip);
+                        hashMap.put("sp_dictionary",sp);
 
                         reference.child(plantname).setValue(hashMap);
 
