@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.plantapp.image.FlowerIdentificationActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +40,7 @@ import jxl.read.biff.BiffException;
 
 public class DictionaryActivity extends AppCompatActivity {
     private Dictionary dictionary;
-    private ImageView dictionary_add,reco1,reco2,reco3,reco4;
+    private ImageView dictionary_add,reco1,reco2,reco3,reco4,btn;
     private RecyclerView recyclerView;
     private FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
@@ -63,6 +64,7 @@ public class DictionaryActivity extends AppCompatActivity {
         reco2=findViewById(R.id.reco2);
         reco3=findViewById(R.id.reco3);
         reco4=findViewById(R.id.reco4);
+        btn=findViewById(R.id.btn);
 
         if ((firebaseUser.getUid()).equals("eYA69vvENVQ8NPXXoWjLt33swyb2")){
             dictionary_add.setVisibility(View.VISIBLE);
@@ -72,6 +74,12 @@ public class DictionaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), EditDictionaryActivity.class));
+            }
+        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FlowerIdentificationActivity.class));
             }
         });
 

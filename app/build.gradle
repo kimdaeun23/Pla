@@ -63,4 +63,10 @@ dependencies {
 
     // 액셀 라이브러리
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+
+    // ml
+    implementation 'com.google.mlkit:image-labeling:17.0.6'
+    implementation 'com.google.mlkit:image-labeling-custom:17.0.0'
+
+    implementation 'com.google.mlkit:object-detection:16.2.8'
 }
