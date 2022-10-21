@@ -27,6 +27,7 @@ import androidx.core.content.FileProvider;
 import androidx.exifinterface.media.ExifInterface;
 
 
+import com.example.plantapp.DictionaryActivity;
 import com.example.plantapp.R;
 
 import java.io.File;
@@ -43,17 +44,24 @@ public abstract class MLImageHelperActivity extends AppCompatActivity {
     public final static int REQUEST_READ_EXTERNAL_STORAGE = 2031;
     File photoFile;
 
-    private ImageView inputImageView;
+    private ImageView inputImageView,close;
     private TextView outputTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R
-                .layout.activity_image_helper);
+        setContentView(R.layout.activity_image_helper);
 
         inputImageView = findViewById(R.id.imageView);
         outputTextView = findViewById(R.id.textView);
+        close = findViewById(R.id.close);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MLImageHelperActivity.this, DictionaryActivity.class));
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

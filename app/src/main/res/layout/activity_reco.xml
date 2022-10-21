@@ -26,20 +26,20 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tv_reco"
                 android:layout_width="230dp"
                 android:layout_height="150dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="25dp"
                 android:text="초보 식물 집사도 키우기 쉬운 식물"
-                android:id="@+id/tv_reco"
                 android:textColor="#184A2C"
                 android:textSize="20dp" />
 
             <ImageView
+                android:id="@+id/iv_reco"
                 android:layout_width="190dp"
                 android:layout_height="150dp"
-                android:id="@+id/iv_reco"
                 android:src="@drawable/reco1" />
         </LinearLayout>
 

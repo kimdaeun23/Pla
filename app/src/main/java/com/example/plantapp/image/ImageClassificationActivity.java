@@ -25,7 +25,7 @@ public class ImageClassificationActivity extends MLImageHelperActivity {
         imageLabeler.process(inputImage).addOnSuccessListener(imageLabels -> {
            StringBuilder sb = new StringBuilder();
            for (ImageLabel label : imageLabels) {
-               sb.append(label.getText()).append(": ").append(label.getConfidence()).append("\n");
+               sb.append(label.getText());
            }
            if (imageLabels.isEmpty()) {
                getOutputTextView().setText("Could not classify!!");
