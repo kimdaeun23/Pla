@@ -131,7 +131,7 @@ public class AddFragment extends Fragment {
                     Dday=String.format("D%d",resultNumber);
                 }
                 else{
-                    Dday=String.format("D+%d",resultNumber+1);
+                    Dday=String.format("D+%d",resultNumber);
                 }
             }
         });

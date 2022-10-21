@@ -191,33 +191,6 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                 cardDialog.callFunction(cardModel.get(i));
             }
         });
-
-//        holder.tv_plantname.setText(cardModel.get(i).getName());
-//        holder.tv_plantday.setText(cardModel.get(i).getDday());
-//
-//        storageRef.child("Images")
-//                .child(firebaseAuth.getCurrentUser().getUid())
-//                .child("plants")
-//                .child(cardModel.get(position).getImageUrl())
-//                .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Glide.with(holder.itemView.getContext()).load(uri).into(holder.iv_profile);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(viewPager2.getContext(), "이미지로드실패", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                PlantInfoDialog cardDialog = new PlantInfoDialog(view.getContext());
-//                cardDialog.callFunction(cardModel.get(i));
-//            }
-//        });
     }
 
     public String dday(String birth){
@@ -228,8 +201,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             tday=calendar.get(Calendar.DAY_OF_MONTH)+1;
 
             int birth_year=Integer.parseInt(birth.substring(0,4));
-            int birth_month=Integer.parseInt(birth.substring(5,6));
-            int birth_day=Integer.parseInt(birth.substring(7));
+            int birth_month=Integer.parseInt(birth.substring(5,7));
+            int birth_day=Integer.parseInt(birth.substring(8));
 
             Calendar dcalender=Calendar.getInstance();
             birth_month-=1;
