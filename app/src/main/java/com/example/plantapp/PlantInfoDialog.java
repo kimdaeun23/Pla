@@ -91,8 +91,8 @@ public class PlantInfoDialog extends Fragment {
         tday = calendar.get(Calendar.DAY_OF_MONTH) + 1;
 
         int birth_year = Integer.parseInt(lastday.substring(0, 4));
-        int birth_month = Integer.parseInt(lastday.substring(5, 6));
-        int birth_day = Integer.parseInt(lastday.substring(7));
+        int birth_month = Integer.parseInt(lastday.substring(5, 7));
+        int birth_day = Integer.parseInt(lastday.substring(8));
 
         Calendar dcalender = Calendar.getInstance();
         birth_month -= 1;
@@ -286,6 +286,7 @@ public class PlantInfoDialog extends Fragment {
                                                     @Override
                                                     public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
                                                         transaction.update(sfDocRef, "water_lastday", now);
+                                                        transaction.update(sfDocRef, "flower_water", 5);
                                                         return null;
                                                     }
                                                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
