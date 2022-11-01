@@ -146,7 +146,6 @@ public class EditProfileActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
 
-                                        Toast.makeText(EditProfileActivity.this,"firestore success",Toast.LENGTH_LONG).show();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
