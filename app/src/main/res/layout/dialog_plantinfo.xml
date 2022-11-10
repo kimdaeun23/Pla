@@ -26,8 +26,8 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/iv_profile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="190dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center_vertical|center_horizontal" />
         </LinearLayout>
@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="디데이"
-                    android:textColor="#76B536"
+                    android:textColor="#ffffff"
                     android:textSize="15dp"
                     android:fontFamily="@font/poppins_bold"
                     android:id="@+id/tv_info_dday"

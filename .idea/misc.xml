@@ -12,7 +12,9 @@
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable-anydpi/ic_test.xml" value="0.1515" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable-anydpi/image.xml" value="0.1475" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable-mdpi/edge_infobox2.xml" value="0.1445" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable-xxhdpi/border_layout2.xml" value="0.1445" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/background_spinner.xml" value="0.1475" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/border_layout.xml" value="0.1445" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/edge_infobox.xml" value="0.1445" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/edge_infotxtbox.xml" value="0.1445" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/heart_solid.xml" value="0.1435" />
@@ -20,11 +22,14 @@
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/menu_selector_color.xml" value="0.1435" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/plus_solid.xml" value="0.1435" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/drawable/seedling_solid.xml" value="0.1435" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_add_story.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_bluetooth.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_bottom.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_comments.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_dictionary.xml" value="0.264" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_edit_profile.xml" value="0.2484375" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_editdictionary.xml" value="0.2484375" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_find.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_followers.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_image_helper.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
@@ -33,6 +38,7 @@
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_post.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_reco.xml" value="0.25" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_search.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/activity_story.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/calendar_cell.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/dialog_plantinfo.xml" value="0.264" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/event_cell.xml" value="0.24947916666666667" />
@@ -49,6 +55,7 @@
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/fragment_week_view.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/image_activity_main.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/item_add_story.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/item_comment.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/item_dictionary.xml" value="0.264" />
         <entry key="..\:/Users/nb-2020-13/AndroidStudioProjects/Pla/app/src/main/res/layout/item_fotos.xml" value="0.24947916666666667" />
